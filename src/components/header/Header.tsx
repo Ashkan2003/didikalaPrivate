@@ -193,7 +193,7 @@ const Header = () => {
   }, [onScroll]);
 
   return (
-    <header className="fixed z-50 bg-white w-full">
+    <header className="fixed z-50 bg-white w-full ">
       {/* read-banner */}
       <div
         className={`hidden md:block relative h-[60px] transition-all duration-300 ${
