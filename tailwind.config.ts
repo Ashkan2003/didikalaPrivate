@@ -7,6 +7,9 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ["Shabnam"],
+    },
     extend: {
       colors: {
         background: "var(--background)",
@@ -15,7 +18,10 @@ export default {
         mainBlue:"#009ec9",
         mainGray:"#515151",
         lightGray:"#676767",
-        mainBlack:"#212529"
+        secondLightGray:'#818181',
+        mainBlack:"#212529",
+        secondBlack:"#495057",
+
       },
     },
   },
