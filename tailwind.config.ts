@@ -18,7 +18,10 @@ export default {
         mainBlue:"#009ec9",
         mainGray:"#515151",
         lightGray:"#676767",
-        mainBlack:"#212529"
+        secondLightGray:'#818181',
+        mainBlack:"#212529",
+        secondBlack:"#495057",
+
       },
     },
   },
