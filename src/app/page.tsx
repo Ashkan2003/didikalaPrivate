@@ -3,7 +3,7 @@ import BigBannersSection from "@/components/main-page/BigBannersSection";
 
 export default function Home() {
   return (
-    <div className="relative h-[100rem] space-y-16">
+    <div className="space-y-16 pt-6">
       <BigBannersSection />
       <AmazingOfferSection />
     </div>
