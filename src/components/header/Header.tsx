@@ -273,13 +273,13 @@ const Header = () => {
           <Dialog
             open={mobileMenuOpen}
             onClose={setMobileMenuOpen}
-            className="lg:hidden  bg-white"
+            className="lg:hidden  bg-white  opacity-100"
             dir="rtl"
           >
             <div className="fixed inset-0 z-10" />
 
             <DialogPanel
-              className={`fixed inset-y-0 right-0 z-10 w-80 overflow-y-auto sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 h-full  rounded-md  backdrop-blur-2xl bg-white`}
+              className={`fixed inset-y-0 right-0 z-50 w-80 overflow-y-auto sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 h-full  rounded-md  backdrop-blur-2xl bg-white`}
             >
               <div className="py-5 flex justify-center ">
                 <Image
