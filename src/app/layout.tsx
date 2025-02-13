@@ -34,8 +34,8 @@ export default function RootLayout({
     <html dir="rtl" lang="fa">
       <body className={`${Shabnam.variable}`}>
         <Header />
-        {children}
-        {/* <Footer /> */}
+        <div className="pt-32 md:pt-48">{children}</div>
+        <Footer />
       </body>
     </html>
   );

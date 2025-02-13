@@ -36,11 +36,8 @@ const UserShoppingCartPage = () => {
             </div>
             <p className="mr-2 font-bold text-[13px] "> تحویل اکسپرس</p>
           </div>
-         </div>
         </div>
-
-        
-        
+      </div>
       </div>
     </>
   );
