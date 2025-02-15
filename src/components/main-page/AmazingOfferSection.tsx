@@ -65,9 +65,18 @@ const productCartList: ProductCartType[] = [
   },
 ];
 
-const AmazingOfferSection = () => {
+interface Props {
+  bgColor: "red" | "blue";
+}
+
+const AmazingOfferSection = ({ bgColor }: Props) => {
   return (
-    <div className="w-full bg-[#EF394E]  px-2 sm:px-16 py-12">
+    <div
+      className={`w-full px-2 sm:px-16 py-12 
+        ${bgColor === "red" && "bg-[#EF394E]"}
+        ${bgColor === "blue" && "bg-[#304FFE]"}
+        `}
+    >
       <div className="w-full relative ">
         <Swiper
           slidesPerView={1}
@@ -77,6 +86,7 @@ const AmazingOfferSection = () => {
             delay: 2000,
             disableOnInteraction: false,
           }}
+          eventsPrefix=";lkaf "
           navigation={true}
           pagination={{
             clickable: true,
