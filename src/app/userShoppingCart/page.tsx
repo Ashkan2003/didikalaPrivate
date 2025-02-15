@@ -6,15 +6,15 @@ import Image from "next/image";
 const UserShoppingCartPage = () => {
   return (
     <>
-      <div className="grid grid-cols-7 max-sm:grid-cols-4">
+      <div className="grid grid-cols-7 ">
         
-        <div className=" mr-20 col-span-5 mt-36 max-sm:col-span-4">
+        <div className=" mr-20 col-span-5 max-sm:col-span-7 ">
         <CartTabs />
         </div>
 
 
-        <div className=" col-span-2 mt-36 ">
-         {/* <CostCart/>  */}
+        <div className=" col-span-2 max-sm:col-span-7">
+         <CostCart/> 
          <div className="mr-11 mt-9">
           <div className="flex mb-3 items-center">
 

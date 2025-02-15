@@ -5,62 +5,63 @@ import Image from "next/image";
 import EmptyShoppingCart from "./EmptyShoppingCart";
 
 const ShoppingCart = () => {
+  const initialProductsInfo = [
+    {
+      id: 1,
+      title:
+        "گوشی موبایل سامسونگ مدل Galaxy A70 SM-A705FN/DS دوسیم‌کارت ظرفیت 128 گیگابایت",
+      seller: "فروشنده: ایرانیان قائم همراه(کاوش تیم)",
+      guarantee: "گارانتی 18 ماهه کاوش تیم",
+      color: "رنگ : مشکی",
+      price: "4,497,000",
+      img: "/imgs/shoppingCart1.jpg",
+      quantity:0,
+    },
+    {
+      id: 2,
+      title:
+        "گوشی موبایل سامسونگ مدل Galaxy A70 SM-A705FN/DS دوسیم‌کارت ظرفیت 128 گیگابایت",
+      seller: "فروشنده: ایرانیان قائم همراه(کاوش تیم)",
+      guarantee: "گارانتی 18 ماهه کاوش تیم",
+      color: "رنگ : مشکی",
+      price: "4,497,000",
+      img: "/imgs/shoppingCart1.jpg",
+      quantity:0,
+    },
+  ];
 
-    const productsInfo = [
-        {
-            title:'گوشی موبایل سامسونگ مدل Galaxy A70 SM-A705FN/DS دوسیم‌کارت ظرفیت 128 گیگابایت',
-            seller:'فروشنده: ایرانیان قائم همراه(کاوش تیم)',
-            guarantee:'گارانتی 18 ماهه کاوش تیم',
-            color:'رنگ : مشکی',
-            price:'4,497,000',
-            img:'/imgs/shoppingCart1.jpg',
-        },
-    ]
-   
+ 
+    const[productsInfo,setProductsInfo]=useState(initialProductsInfo)
+  
+    const decHandler = (id) => {
+      setProductsInfo(
+        productsInfo.map(product=>
+          product.id === id && product.quantity > 0 ?
+          {...product,quantity:product.quantity - 1} :
+          product
+        )
+      )
+    }
+    const incHandler = (id) => {
+      setProductsInfo(
+        productsInfo.map(product=>
+          product.id === id ?
+          {...product,quantity:product.quantity + 1} :
+          product
+        )
+      )
+    }
 
-    // const colors = [
-    //   {
-    //     color:'black',
-    //     hex:'#000000'
-    //   },
-    //   {
-    //     color:'blue',
-    //     hex:'#0000FF'
-    //   },
-    //   {
-    //     color:'red',
-    //     hex:'#FF0000'
-    //   },
-    //   {
-    //     color:'pink',
-    //     hex:'#FFC0CB'
-    //   },
-    // ]
+  // if(productsInfo.length === 0){
+  //   return(
+  //     <EmptyShoppingCart/>
+  //   )
+  // }
 
+  const deleteHandler = () => {
+    console.log("product deleted!!!!!!!!");
+  };
 
-    
-    
-    
-    
-      const[counter , setCounter] = useState(0)
-
-      const incHandler = () => setCounter(counter+1)
-      const decHandler = () => {
-        if(counter > 0){
-          setCounter(counter-1)
-        }
-      } 
-    
-      // if(productsInfo.length === 0){
-      //   return(
-      //     <EmptyShoppingCart/>
-      //   )
-      // }
-
-      const deleteHandler = () => {
-        console.log('product deleted!!!!!!!!');
-      }
-    
   return (
     <>
       <div className="flex justify-between items-center border-b-[1px] border-mainRed py-4">
@@ -72,67 +73,76 @@ const ShoppingCart = () => {
           </p>
         </div>
       </div>
-      <div className="flex border-b-[1px] border-[#dee2e6]">
-        {
-          
-          productsInfo.map((product)=>{
-            
-              return(
-                <>
-                <div className="flex max-sm:block">
-                <div className=" flex items-center justify-center p-5 ">
-                  <button onClick={deleteHandler} className=" flex justify-center items-center text-[#999] bg-[#f5f5f5] text-lg w-6 h-6 rounded-xl text-center ">×</button>
-                  <div className="relative my-3 w-32 h-32 max-sm:w-60 max-sm:h-60">
+      <div className=" ">
+        {productsInfo.map((product) => {
+          return (
+            <>
+              <div key={product.id} className="flex max-sm:flex max-sm:flex-col max-sm:items-start  border-b-[1px] border-[#dee2e6]">
+                <div className=" flex items-center p-5 ">
+                  <button
+                    onClick={deleteHandler}
+                    className=" flex justify-center items-center text-[#999] bg-[#f5f5f5] text-lg w-6 h-6 rounded-xl text-center "
+                  >
+                    ×
+                  </button>
+                  <div className="relative my-3 w-32 h-32 flex items-center justify-center max-sm:w-48 max-sm:h-44">
                     <Image fill src={product.img} alt="mobile" />
                   </div>
                 </div>
-                <div className="p-5 ">
-              <a href="#">
-                  <h3 className="text-base overflow-hidden max-w-xs font-bold text-[#656565]  whitespace-nowrap mt-3 mb-8 ">
-                   {product.title} 
-                  </h3>
-              </a>
-              <p className="text-[13px] my-2 text-[#212529] ">
-                 {product.seller}
-              </p>
-              <p className="text-xs my-2 text-[#212529] ">
-                {product.guarantee}
-              </p>
-              <div className="flex items-center my-2">
-                  <p className="text-[13px] text-[#212529] ">
-                       { product.color}
+                <div className="  ">
+                  <a href="#">
+                    <h3 className="text-base overflow-hidden max-w-xs font-bold text-[#656565]  whitespace-nowrap mt-3 mb-8 max-sm:text-sm max-sm:mb-5">
+                      {product.title}
+                    </h3>
+                  </a>
+                  <p className="text-[13px] my-2 text-[#212529] ">
+                    {product.seller}
                   </p>
-                  <span className="text-[13px] w-4 h-4 rounded-md inline-block bg-black mr-2" ></span>
-              </div>
-              <a href="#" className="text-mainBlue text-xs ">
-                  انتقال به لیست خرید بعدی    
-              </a>
-          </div>
+                  <p className="text-xs my-2 text-[#212529] ">
+                    {product.guarantee}
+                  </p>
+                  <div className="flex items-center my-2">
+                    <p className="text-[13px] text-[#212529] ">
+                      {product.color}
+                    </p>
+                    <span className="text-[13px] w-4 h-4 rounded-md inline-block bg-black mr-2"></span>
+                  </div>
+                  <a href="#" className="text-mainBlue text-xs ">
+                    انتقال به لیست خرید بعدی
+                  </a>
                 </div>
-               
-                </>
-                
-              )
-            }
-            
-)
-        }
-        
-        <div className=" mr-32 mt-16 ">
-                <p className="text-center text-sm text-[#212529] ">تعداد</p>
-                <div className="flex items-center justify-center">
-                    <button onClick={decHandler} className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400  rounded-tr-md rounded-br-md border-l-0 ">-</button>
-                    <button className={`flex justify-center items-center text-xl border pt-1 border-gray-400 w-8 h-8 ${
-                      counter > 99 && 'px-5'
-                    } `} >
-                      {counter}
+                <div className=" mr-44 mt-16 max-sm:ml-44 max-sm:mt-8 ">
+                  <p className="text-center text-sm text-[#212529] ">تعداد</p>
+                  <div className="flex items-center justify-center">
+                    <button
+                      onClick={()=>decHandler(product.id)}
+                      className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400  rounded-tr-md rounded-br-md border-l-0 max-sm:px-2 "
+                    >
+                      -
                     </button>
-                    <button onClick={incHandler} className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400 rounded-tl-md rounded-bl-md border-r-0 ">+</button>
+                    <button
+                      className={`flex justify-center items-center text-xl border pt-1 border-gray-400 w-8 h-8 max-sm:px-2 ${
+                        product.quantity > 99 && "px-5"
+                      } `}
+                    >
+                      {product.quantity}
+                    </button>
+                    <button
+                      onClick={()=>incHandler((product.id))}
+                      className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400 rounded-tl-md rounded-bl-md border-r-0 max-sm:px-2"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-        </div>
-        <div className=" text-[#212529] text-sm mr-12 mt-[88px]">
-            <strong>{productsInfo[0].price} تومان</strong>
-        </div>
+                <div className=" text-[#212529] text-sm mr-14 max-sm:ml-14 mt-[88px] max-sm:mt-6 max-sm:mb-3">
+                  <strong>{product.price} تومان</strong>
+                </div>
+                </div>
+            </>
+          );
+        })}
+
       </div>
     </>
   );

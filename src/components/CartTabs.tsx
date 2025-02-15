@@ -18,12 +18,12 @@ const CartTabs = () => {
 
   return (
     <>
-      <div className="flex border-b border-[#dee2e6]">
-        <div className="flex mt-10 items-center justify-center ">
+      <div className="flex border-b border-[#dae2e6]">
+        <div className="flex mt-10 items-center justify-center  ">
           {tabsData.map((tab, indx) => (
             <button
               key={tab.index}
-              className={`text-center p-2 h-14 font-bold text-sm max-sm:text-xs ${
+              className={`text-center px-1 h-14 font-bold text-sm max-sm:flex max-sm:text-[12px] max-sm:h-9 ${
                 indx === activeTabIndex
                   ? "border-b-4 border-b-mainRed text-secondBlack "
                   : "border-none text-secondLightGray "
@@ -31,9 +31,9 @@ const CartTabs = () => {
               onClick={() => setActiveTabIndex(indx)}
             >
               {tab.label}
-              <span className="font-bold bg-mainRed text-[#f8f8f8] rounded-[50%] w-5 h-5 inline-block mr-1">
+              <div className="font-bold bg-mainRed text-[#f8f8f8] rounded-[50%] w-5 h-5 inline-block mr-1">
                 1
-              </span>
+              </div>
             </button>
           ))}
         </div>
