@@ -1,6 +1,7 @@
 import AmazingOfferSection from "@/components/main-page/AmazingOfferSection";
 import BestSellingProductsSection from "@/components/main-page/BestSellingProductsSection";
 import BigBannersSection from "@/components/main-page/BigBannersSection";
+import CategoryCounterSection from "@/components/main-page/CategoryCounterSection";
 import { MediumBanner } from "@/components/main-page/MediumBannerSection";
 import SmallBannerSection from "@/components/main-page/SmallBannerSection";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <MediumBanner />
       <AmazingOfferSection bgColor="blue" />
       <SmallBannerSection />
+      <CategoryCounterSection />
     </div>
   );
 }
