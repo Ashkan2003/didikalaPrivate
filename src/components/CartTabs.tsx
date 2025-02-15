@@ -23,7 +23,7 @@ const CartTabs = () => {
           {tabsData.map((tab, indx) => (
             <button
               key={tab.index}
-              className={`text-center p-2 h-14 font-bold text-sm ${
+              className={`text-center p-2 h-14 font-bold text-sm max-sm:text-xs ${
                 indx === activeTabIndex
                   ? "border-b-4 border-b-mainRed text-secondBlack "
                   : "border-none text-secondLightGray "
@@ -38,7 +38,7 @@ const CartTabs = () => {
           ))}
         </div>
       </div>
-      {activeTabIndex === 0 ? <ShoppingCart /> : "hmmmmmmmmmm"}
+      {activeTabIndex === 0 ? <ShoppingCart /> : ""}
     </>
   );
 };

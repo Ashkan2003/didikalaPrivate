@@ -79,10 +79,12 @@ const ShoppingCart = () => {
             
               return(
                 <>
-                <div className="flex">
+                <div className="flex max-sm:block">
                 <div className=" flex items-center justify-center p-5 ">
-                  <button onClick={deleteHandler} className=" flex justify-center items-center text-[#999] bg-[#f5f5f5] text-lg w-6 h-6 rounded-xl text-center  ">×</button>
-                  <Image width={500} height={500} src={product.img} alt="mobile" className="my-3 max-w-32 " />
+                  <button onClick={deleteHandler} className=" flex justify-center items-center text-[#999] bg-[#f5f5f5] text-lg w-6 h-6 rounded-xl text-center ">×</button>
+                  <div className="relative my-3 w-32 h-32 max-sm:w-60 max-sm:h-60">
+                    <Image fill src={product.img} alt="mobile" />
+                  </div>
                 </div>
                 <div className="p-5 ">
               <a href="#">
@@ -119,11 +121,13 @@ const ShoppingCart = () => {
         <div className=" mr-32 mt-16 ">
                 <p className="text-center text-sm text-[#212529] ">تعداد</p>
                 <div className="flex items-center justify-center">
-                    <button onClick={decHandler} className="flex justify-center items-center pb-3  text-gray-400 text-4xl w-8 h-8 border border-gray-400  rounded-tr-md rounded-br-md border-l-0 ">-</button>
-                    <button className="flex justify-center items-center text-2xl border pb-1 border-gray-400 w-8 h-8  " >
+                    <button onClick={decHandler} className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400  rounded-tr-md rounded-br-md border-l-0 ">-</button>
+                    <button className={`flex justify-center items-center text-xl border pt-1 border-gray-400 w-8 h-8 ${
+                      counter > 99 && 'px-5'
+                    } `} >
                       {counter}
                     </button>
-                    <button onClick={incHandler} className="flex justify-center items-center pb-2 text-gray-400 text-4xl w-8 h-8 border border-gray-400 rounded-tl-md rounded-bl-md border-r-0 ">+</button>
+                    <button onClick={incHandler} className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400 rounded-tl-md rounded-bl-md border-r-0 ">+</button>
                 </div>
         </div>
         <div className=" text-[#212529] text-sm mr-12 mt-[88px]">
