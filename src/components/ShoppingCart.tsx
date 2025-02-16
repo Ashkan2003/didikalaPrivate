@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { FaTruckFast } from "react-icons/fa6";
 import Image from "next/image";
-import EmptyShoppingCart from "./EmptyShoppingCart";
 
 const ShoppingCart = () => {
   const initialProductsInfo = [
@@ -15,7 +14,7 @@ const ShoppingCart = () => {
       color: "رنگ : مشکی",
       price: "4,497,000",
       img: "/imgs/shoppingCart1.jpg",
-      quantity:0,
+      quantity: 0,
     },
     {
       id: 2,
@@ -26,31 +25,30 @@ const ShoppingCart = () => {
       color: "رنگ : مشکی",
       price: "4,497,000",
       img: "/imgs/shoppingCart1.jpg",
-      quantity:0,
+      quantity: 0,
     },
   ];
 
- 
-    const[productsInfo,setProductsInfo]=useState(initialProductsInfo)
-  
-    const decHandler = (id) => {
-      setProductsInfo(
-        productsInfo.map(product=>
-          product.id === id && product.quantity > 0 ?
-          {...product,quantity:product.quantity - 1} :
-          product
-        )
+  const [productsInfo, setProductsInfo] = useState(initialProductsInfo);
+
+  const decHandler = (id: number) => {
+    setProductsInfo(
+      productsInfo.map((product) =>
+        product.id === id && product.quantity > 0
+          ? { ...product, quantity: product.quantity - 1 }
+          : product
       )
-    }
-    const incHandler = (id) => {
-      setProductsInfo(
-        productsInfo.map(product=>
-          product.id === id ?
-          {...product,quantity:product.quantity + 1} :
-          product
-        )
+    );
+  };
+  const incHandler = (id: number) => {
+    setProductsInfo(
+      productsInfo.map((product) =>
+        product.id === id
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
       )
-    }
+    );
+  };
 
   // if(productsInfo.length === 0){
   //   return(
@@ -77,7 +75,10 @@ const ShoppingCart = () => {
         {productsInfo.map((product) => {
           return (
             <>
-              <div key={product.id} className="flex max-sm:flex max-sm:flex-col max-sm:items-start  border-b-[1px] border-[#dee2e6]">
+              <div
+                key={product.id}
+                className="flex max-sm:flex max-sm:flex-col max-sm:items-start  border-b-[1px] border-[#dee2e6]"
+              >
                 <div className=" flex items-center p-5 ">
                   <button
                     onClick={deleteHandler}
@@ -115,7 +116,7 @@ const ShoppingCart = () => {
                   <p className="text-center text-sm text-[#212529] ">تعداد</p>
                   <div className="flex items-center justify-center">
                     <button
-                      onClick={()=>decHandler(product.id)}
+                      onClick={() => decHandler(product.id)}
                       className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400  rounded-tr-md rounded-br-md border-l-0 max-sm:px-2 "
                     >
                       -
@@ -128,7 +129,7 @@ const ShoppingCart = () => {
                       {product.quantity}
                     </button>
                     <button
-                      onClick={()=>incHandler((product.id))}
+                      onClick={() => incHandler(product.id)}
                       className="flex justify-center items-center pt-1  text-gray-400 text-4xl w-8 h-8 border border-gray-400 rounded-tl-md rounded-bl-md border-r-0 max-sm:px-2"
                     >
                       +
@@ -138,11 +139,10 @@ const ShoppingCart = () => {
                 <div className=" text-[#212529] text-sm mr-14 max-sm:ml-14 mt-[88px] max-sm:mt-6 max-sm:mb-3">
                   <strong>{product.price} تومان</strong>
                 </div>
-                </div>
+              </div>
             </>
           );
         })}
-
       </div>
     </>
   );

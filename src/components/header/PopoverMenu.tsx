@@ -1,27 +1,25 @@
-import { Fragment, useRef, useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ProductsCategoryType } from "@/types/GlobalTypes";
 import {
   Popover,
   PopoverButton,
   PopoverPanel,
   Transition,
 } from "@headlessui/react";
-import { CgMenu } from "react-icons/cg";
-import { ProductsCategoryType } from "@/types/GlobalTypes";
 import Link from "next/link";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { CgMenu } from "react-icons/cg";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 interface Props {
   productsCategories: ProductsCategoryType[];
 }
 
 export default function PopoverMenu({ productsCategories }: Props) {
-  let timeout; // NodeJS.Timeout
+  let timeout: any; // NodeJS.Timeout
   const timeoutDuration = 0;
 
-  const buttonRef = useRef(null); // useRef<HTMLButtonElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null); // useRef<HTMLButtonElement>(null)
   const [openState, setOpenState] = useState(false);
   const [selectedSubCategoryIndex, setSelectedSubCategoryIndex] = useState(-1);
 
@@ -36,15 +34,15 @@ export default function PopoverMenu({ productsCategories }: Props) {
     }
   };
 
-  const toggleMenu = (open) => {
+  const toggleMenu = () => {
     // log the current open state in React (toggle open state)
     setOpenState((openState) => !openState);
     // toggle the menu by clicking on buttonRef
-    buttonRef?.current?.click(); // eslint-disable-line
+    buttonRef?.current?.click();
   };
 
   // Open the menu after a delay of timeoutDuration
-  const onHover = (open, action) => {
+  const onHover = (open: boolean, action: any) => {
     // if the modal is currently closed, we need to open it
     // OR
     // if the modal is currently open, we need to close it
@@ -55,17 +53,17 @@ export default function PopoverMenu({ productsCategories }: Props) {
       // clear the old timeout, if any
       clearTimeout(timeout);
       // open the modal after a timeout
-      timeout = setTimeout(() => toggleMenu(open), timeoutDuration);
+      timeout = setTimeout(() => toggleMenu(), timeoutDuration);
     }
     // else: don't click! 😁
   };
 
-  const handleClick = (open) => {
+  const handleClick = (open: boolean) => {
     setOpenState(!open); // toggle open state in React state
     clearTimeout(timeout); // stop the hover timer if it's running
   };
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: any) => {
     if (buttonRef.current && !buttonRef.current.contains(event.target)) {
       event.stopPropagation();
     }
@@ -79,7 +77,7 @@ export default function PopoverMenu({ productsCategories }: Props) {
   });
 
   return (
-    <div className={classNames()}>
+    <div>
       <Popover style={{ border: "none" }} className="relative">
         {({ open }) => (
           <div
