@@ -9,7 +9,7 @@ interface Props {
 
 const ProductCart = ({ productCart }: Props) => {
   return (
-    <div className="bg-white rounded-xl w- h-96 px-5 py-4 space-y-2">
+    <div className="bg-white rounded-xl cursor-pointer w- h-96 px-5 py-4 space-y-2 hover:shadow-md">
       <StarRating
         defaultRating={productCart.cartRate}
         maxRating={5}
@@ -24,7 +24,7 @@ const ProductCart = ({ productCart }: Props) => {
       </p>
       <div className="space-y-2">
         <p className="text-gray-600 text-sm ">لباس مردانه</p>
-        <p className="font-bold">{productCart.productPrice} تومان</p>
+        <p className="font-semibold">{productCart.productPrice} تومان</p>
       </div>
     </div>
   );
