@@ -4,7 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 const CostCart = () => {
   return (
     <>
-      <div className="text-sm w-[20rem] mr-10 ml-28 mt-24 border border-[#eee]  rounded-lg ">
+      <div className="text-sm w-[20rem]  border border-[#eee]  rounded-lg  ">
 
         <div className="flex gap-14 pt-5">
           <div className="flex flex-col text-justify pr-7 text-[#515151] font-bold ">
