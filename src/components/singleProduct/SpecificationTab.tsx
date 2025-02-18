@@ -43,8 +43,10 @@ export const Specification = () => {
           alt="Circle Decoration"
           priority // Ensures faster LCP by preloading the image
         />
-        <h2 className="inline text-md text-[#6f7479] font-semibold">مشخصات فنی</h2>
-        <h1 className="text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
+        <h2 className="inline text-md text-[#6f7479] font-semibold">
+          مشخصات فنی
+        </h2>
+        <h1 className=" md:text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
           گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
           128گیگابایت
         </h1>
@@ -60,14 +62,14 @@ export const Specification = () => {
         </thead>
         <tbody>
           {Object.entries(specifications).map(([key, value]) => (
-            <tr key={key} className="bg-white dark:bg-gray-800">
+            <tr key={key} className="bg-white">
               <th
                 scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 rounded-md text-right"
+                className="px-6 py-4 text-sm max-md:text-xs font-medium text-gray-900 whitespace-nowrap bg-gray-200 rounded-md text-right"
               >
                 {key}
               </th>
-              <td className="px-6 py-4 bg-gray-200 rounded-md text-right">
+              <td className="px-6 py-4 text-sm max-md:text-xs bg-gray-200 rounded-md text-right">
                 {value}
               </td>
             </tr>
