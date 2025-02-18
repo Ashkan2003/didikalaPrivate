@@ -17,6 +17,8 @@ const images = [
   { id: 2, src: "/imgs/thumbnail-2.jpg", alt: "Slide 2" },
   { id: 3, src: "/imgs/thumbnail-3.jpg", alt: "Slide 3" },
   { id: 4, src: "/imgs/thumbnail-4.jpg", alt: "Slide 4" },
+  { id: 4, src: "/imgs/thumbnail-1.jpg", alt: "Slide 4" },
+  { id: 4, src: "/imgs/thumbnail-2.jpg", alt: "Slide 4" },
 ];
 
 const ImgSlider = () => {
@@ -35,8 +37,8 @@ const ImgSlider = () => {
         >
           <Image
             src={fullscreenImage}
-            width={600}
-            height={400}
+            layout="fill"
+            objectFit="contain"
             alt="Fullscreen"
             className="max-w-full max-h-full object-contain"
           />
@@ -48,6 +50,7 @@ const ImgSlider = () => {
           {
             "--swiper-navigation-color": "#6a6a6a",
             "--swiper-pagination-color": "#fff",
+            "--swiper-navigation-size": "20px",
           } as React.CSSProperties
         }
         loop={true}
@@ -55,16 +58,17 @@ const ImgSlider = () => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2 w-full max-w-[400px] h-auto sm:h-[250px] !pb-8 mb-3 border-b border-gray-200" // Adjust width & height
+        className={`mySwiper2 w-full max-w-[400px] h-auto sm:h-[250px] !pb-8 mb-3 border-b border-gray-200`}
       >
         {images.map((image) => (
           <SwiperSlide key={image.id}>
             <Image
               src={image.src}
+              layout="responsive"
               width={400}
               height={250}
               alt={image.alt}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover lg:h-72 xl:h-72"
               onClick={() => setFullscreenImage(image.src)}
             />
           </SwiperSlide>
@@ -79,16 +83,17 @@ const ImgSlider = () => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper w-full mt-2 max-w-[400px] h-auto"
+        className="mySwiper w-full mt-2 max-w-lg h-auto"
       >
         {images.map((image) => (
           <SwiperSlide key={image.id}>
             <Image
               src={image.src}
+              layout="responsive"
               width={400}
               height={200}
               alt={image.alt}
-              className="w-full h-[80px] object-cover cursor-pointer"
+              className="w-full h-20 object-cover cursor-pointer lg:h-24 xl:h-28"
             />
           </SwiperSlide>
         ))}

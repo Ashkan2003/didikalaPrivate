@@ -6,18 +6,22 @@ import Image from "next/image";
 export const Comments = () => {
   const progressData = [
     {
+      id:0,
       label: "طراحی",
       percentage: 45,
     },
     {
+      id:1,
       label: "ارزش خرید",
       percentage: 20,
     },
     {
+      id:2,
       label: "کیفیت ساخت",
       percentage: 90,
     },
     {
+      id:3,
       label: "امکانات و قابلیت ها",
       percentage: 75,
     },
@@ -66,19 +70,19 @@ export const Comments = () => {
         <h2 className="inline text-md text-[#6f7479] font-bold">
           امتیاز کاربران به:
         </h2>
-        <h1 className="text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
+        <h1 className="md:text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
           گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
           128گیگابایت
         </h1>
       </div>
-      <div className="grid md:grid-cols-2">
-        <div className="w-5/6 m-3 p-3 bg-gray-50">
-          {progressData.map((data, index) => (
+      <div className="grid md:grid-cols-2 place-items-center">
+        <div className="w-full md:w-5/6 md:m-3 p-3 bg-gray-50">
+          {progressData.map((data) => (
             <div
-              key={index}
+              key={data.id}
               className="flex justify-start items-center gap-3 p-3"
             >
-              <div className="text-sm w-1/4 ml-auto">{data.label}</div>
+              <div className="max-md:text-xs text-sm w-1/4 ml-auto">{data.label}</div>
               <div className="w-2/4 bg-gray-200 rounded-full h-1">
                 <div
                   className="bg-mainRed h-1 rounded-full"
@@ -93,19 +97,17 @@ export const Comments = () => {
         </div>
 
         <div className="">
-          <h2 className="text-lg text-[#5a5a5a] p-3">
+          <h2 className="md:text-lg text-[#5a5a5a] p-3">
             شما هم می‌توانید در مورد این کالا نظر بدهید.
           </h2>
-          <p className="text-[#676767] p-3">
+          <p className="text-[#676767] p-3 max-md:text-sm max-md:leading-8">
             برای ثبت نظر، لازم است ابتدا وارد حساب کاربری خود شوید. اگر این
             محصول را قبلا از دیجی‌کالا خریده باشید، نظر شما به عنوان مالک محصول
             ثبت خواهد شد.
           </p>
           <button className="w-48 h-10 relative flex items-center justify-center rounded-[10px] bg-mainRed overflow-hidden md:flex group m-3">
-            {/* Expanding Light Red Background */}
             <div className="absolute right-0 top-0 h-full w-10 bg-red-300 rounded-l-2xl group-hover:rounded-l-[10px] transition-all duration-300 ease-in-out group-hover:w-full"></div>
 
-            {/* Cart Icon (Positioned on top of background) */}
             <div className="absolute right-0 top-0 h-full w-10 grid place-items-center text-white z-10">
               <BiCommentDetail className="text-xl" />
             </div>
@@ -138,14 +140,13 @@ export const Comments = () => {
       {fakeComments.map((comment, index) => (
         <div
           key={index}
-          className="border border-gray-200 rounded-lg p-5 m-5 my-8"
+          className="border border-gray-200 rounded-lg md:p-5 md:m-5 my-8"
         >
-          <div className="grid grid-cols-3 m-5 max-md:grid-cols-1">
-            <div>
+          <div className="grid grid-cols-3 m-5 max-md:grid-cols-1 md:px-5">
+            <div className="max-md:text-sm">
               <div>
                 <RiShoppingCart2Line className="inline text-black text-2xl font-semibold" />
                 <span className="text-[#245a1dfa] mx-5 text-sm">
-                  {" "}
                   خریدار این محصول
                 </span>
               </div>
@@ -153,36 +154,35 @@ export const Comments = () => {
                 <div className="font-bold text-black my-2">
                   رنگ خریداری شده:
                 </div>
-                <div className="relative">
-                  <span className="w-4 h-4 absolute right-0 top-2 border border-gray-200 rounded-[5px] bg-[#2196f3]"></span>
-                  <span className="pr-9 text-black font-bold">
+                <div className="flex items-center">
+                  <span className="w-4 h-4 border border-gray-200 rounded-[5px] bg-[#2196f3]"></span>
+                  <span className="pr-4 text-black font-bold">
                     {comment.color}
                   </span>
                 </div>
               </div>
               <div className=" my-7">
                 <div className="font-bold text-black my-2">
-                  {" "}
-                  خریداری شده از:{" "}
+                  خریداری شده از:
                 </div>
-                <div className="relative">
-                  <BsShop className="w-4 h-4 absolute right-0 top-2" />
-                  <span className="pr-9 text-[#1ca2bd] font-bold">
+                <div className="flex items-center">
+                  <BsShop className="w-4 h-4" />
+                  <span className="pr-4 text-[#1ca2bd] font-bold">
                     {comment.shop}
                   </span>
                 </div>
               </div>
             </div>
             <div className="col-span-2">
-              <h1 className="text-lg font-bold text-[#5f5f5f]">
+              <h1 className="md:text-lg font-bold text-[#5f5f5f]">
                 {comment.productName}
               </h1>
-              <h5 className="text-[#adadad] text-sm pb-4">
+              <h5 className="text-[#adadad] max-sm:text-xs text-sm pb-4">
                 توسط {comment.userName} در تاریخ{" "}
                 <span>{comment.submittedDate}</span>
               </h5>
               <hr />
-              <p className="py-5">{comment.description}</p>
+              <p className="py-5 sm:text-sm sm:leading-8 text-[13px] leading-7">{comment.description}</p>
             </div>
           </div>
         </div>
