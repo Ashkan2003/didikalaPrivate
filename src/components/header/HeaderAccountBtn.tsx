@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import {
   Popover,
   PopoverButton,
   PopoverPanel,
   Transition,
 } from "@headlessui/react";
-import { Fragment } from "react";
+import React, { Fragment, ReactElement } from "react";
+import { IconType } from "react-icons";
 import { IoMdExit } from "react-icons/io";
 import { MdOutlineManageAccounts, MdOutlineMessage } from "react-icons/md";
 import { RiAccountCircleLine, RiProfileLine } from "react-icons/ri";
 
-
 type AccountMenuType = {
   title: string;
   linkHref: string;
-  icon: any;
+  icon: ReactElement<IconType>;
 };
 
 const HeaderAccountBtn = () => {

@@ -66,7 +66,7 @@ const productCartList: ProductCartType[] = [
 
 const BestSellingProductsSection = () => {
   return (
-    <div className=" relative bg-white  px-4 sm:px-16 pb-12 sm:mx-16 border-gray-100 border-2 rounded-xl">
+    <div className=" relative bg-white  px-4 border-gray-100 border-2 rounded-xl sm:px-16 pb-12 sm:mx-16 ">
       <div className="flex items-center pt-5 pb-6">
         <FaCircle className="text-[#CFD8E3] text-[11px]" />
         <FaCircle className="text-[#CFD8E3] ms-1" />

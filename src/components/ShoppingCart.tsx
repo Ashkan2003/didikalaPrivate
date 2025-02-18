@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { FaTruckFast } from "react-icons/fa6";
 import Image from "next/image";
-import EmptyShoppingCart from "./EmptyShoppingCart";
 
 const ShoppingCart = () => {
   const initialProductsInfo = [
@@ -17,11 +16,22 @@ const ShoppingCart = () => {
       img: "/imgs/shoppingCart1.jpg",
       quantity: 0,
     },
+    {
+      id: 2,
+      title:
+        "گوشی موبایل سامسونگ مدل Galaxy A70 SM-A705FN/DS دوسیم‌کارت ظرفیت 128 گیگابایت",
+      seller: "فروشنده: ایرانیان قائم همراه(کاوش تیم)",
+      guarantee: "گارانتی 18 ماهه کاوش تیم",
+      color: "رنگ : مشکی",
+      price: "4,497,000",
+      img: "/imgs/shoppingCart1.jpg",
+      quantity: 0,
+    },
   ];
 
   const [productsInfo, setProductsInfo] = useState(initialProductsInfo);
 
-  const decHandler = (id) => {
+  const decHandler = (id: number) => {
     setProductsInfo(
       productsInfo.map((product) =>
         product.id === id && product.quantity > 0
@@ -30,8 +40,7 @@ const ShoppingCart = () => {
       )
     );
   };
-
-  const incHandler = (id) => {
+  const incHandler = (id: number) => {
     setProductsInfo(
       productsInfo.map((product) =>
         product.id === id
@@ -40,6 +49,8 @@ const ShoppingCart = () => {
       )
     );
   };
+
+ 
 
   const deleteHandler = () => {
     console.log("product deleted!!!!!!!!");
