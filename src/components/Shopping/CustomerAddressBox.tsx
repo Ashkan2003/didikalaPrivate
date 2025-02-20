@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import EditCustomerAddressModal from "./EditCustomerAddressModal";
+
 interface CustomerAddressBoxProps {
   isDeleteOpen: boolean;
   setIsDeleteOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,7 +8,6 @@ interface CustomerAddressBoxProps {
 }
 
 function CustomerAddressBox({ isDeleteOpen, setIsDeleteOpen, isEditAddressOpen, setIsEditAddressOpen }: CustomerAddressBoxProps) {
-  //const [isEditCustomerAddressModal, setIsEditCustomerAddressModal] = useState<boolean>(false);
 
   return (
     <>
