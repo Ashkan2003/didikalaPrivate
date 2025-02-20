@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/Footer";
 import localFont from "next/font/local";
+import ReactQueryPvorider from "@/providers/ReactQueryPvorider";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -33,9 +34,11 @@ export default function RootLayout({
   return (
     <html dir="rtl" lang="fa">
       <body className={`${Shabnam.variable}`}>
-        <Header />
-        <div className="pt-32 md:pt-48">{children}</div>
-        <Footer />
+        <ReactQueryPvorider>
+          <Header />
+          <div className="pt-32 md:pt-48">{children}</div>
+          <Footer />
+        </ReactQueryPvorider>
       </body>
     </html>
   );
