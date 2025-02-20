@@ -18,8 +18,8 @@ const CartTabs = () => {
 
   return (
     <>
-      <div className="flex border-b border-[#dae2e6]">
-        <div className="flex mt-10 items-center justify-center  ">
+      <div className="flex border-b border-[#dae2e6] ">
+        <div className="flex mt-10 items-center justify-center">
           {tabsData.map((tab, indx) => (
             <button
               key={tab.index}

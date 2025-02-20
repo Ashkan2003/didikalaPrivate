@@ -18,8 +18,8 @@ const Review = () => {
           گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
           128گیگابایت
         </h1>
-        <div className="text-[#666] mx-32 text-justify">
-          <p className="text-sm leading-8">
+        <div className="text-[#666] mx-24 max-md:mx-2 text-justify">
+          <p className="text-sm max-sm:text-[13px] leading-8 max-sm:leading-7">
             سامسونگ سال 2019 را با متنوع کردن هرچند بیشتر سری گوشی‌های A خود
             آغاز کرد. این سری از تولیدات سامسونگ به داشتن صفحه‌نمایش بسیار با
             کیفیت AMOLED و دوربین‌هایی با امکانات بالا شهرت دارند. در این میان
