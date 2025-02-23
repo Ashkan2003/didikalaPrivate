@@ -8,7 +8,12 @@ const specifications = {
   وزن: "174 گرم",
 };
 
-export const Specification = () => {
+interface Props {
+  productName?: string;
+  productTitle?: string;
+}
+
+export const Specification = ({ productName, productTitle }: Props) => {
   return (
     // <div className="relative overflow-x-auto">
     //   <table className="border-separate border-spacing-4 w-full">
@@ -47,8 +52,8 @@ export const Specification = () => {
           مشخصات فنی
         </h2>
         <h1 className=" md:text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
-          گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
-          128گیگابایت
+          {productName}
+          {productTitle}
         </h1>
       </div>
       <table className="border-separate border-spacing-4 w-full">

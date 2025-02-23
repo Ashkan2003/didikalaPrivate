@@ -13,63 +13,20 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
-
-const productCartList: ProductCartType[] = [
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 3090000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 2990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-];
+import { useProducts } from "@/reactQuery/product/useGetProducts";
+import MiniSpinner from "../global/MiniSpinner";
 
 interface Props {
   bgColor: "red" | "blue";
 }
 
 const AmazingOfferSection = ({ bgColor }: Props) => {
+  const { products, isLoadingProducts, error, status } = useProducts();
+
+  if (status == "error") {
+    console.log("error on load products");
+  }
+
   return (
     <div
       className={`w-full px-2 sm:px-16 py-12 
@@ -124,11 +81,15 @@ const AmazingOfferSection = ({ bgColor }: Props) => {
               </button>
             </div>
           </SwiperSlide>
-          {productCartList.map((productCart, index) => (
-            <SwiperSlide className="" key={index}>
-              <ProductCart productCart={productCart} />
-            </SwiperSlide>
-          ))}
+          {status === "pending" ? (
+            <MiniSpinner />
+          ) : (
+            products?.map((productCart, index) => (
+              <SwiperSlide className="" key={index}>
+                <ProductCart productCart={productCart} />
+              </SwiperSlide>
+            ))
+          )}
         </Swiper>
       </div>
     </div>

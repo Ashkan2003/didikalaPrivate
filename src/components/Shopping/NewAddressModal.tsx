@@ -8,7 +8,6 @@ interface NewAddressModalProps {
 }
 
 function NewAddressModal({ isOpen, setIsOpen }: NewAddressModalProps) {
-
   interface IFormInput {
     firstName: string;
     lastName: string;

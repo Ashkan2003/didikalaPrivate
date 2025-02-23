@@ -3,61 +3,13 @@ import { RiShoppingCart2Line } from "react-icons/ri";
 import { BsShop } from "react-icons/bs";
 import { BiCommentDetail } from "react-icons/bi";
 import Image from "next/image";
-export const Comments = () => {
-  const progressData = [
-    {
-      id:100,
-      label: "طراحی",
-      percentage: 45,
-    },
-    {
-      id:101,
-      label: "ارزش خرید",
-      percentage: 20,
-    },
-    {
-      id:102,
-      label: "کیفیت ساخت",
-      percentage: 90,
-    },
-    {
-      id:103,
-      label: "امکانات و قابلیت ها",
-      percentage: 75,
-    },
-  ];
-  const fakeComments = [
-    {
-      id: 300,
-      productName: "لباسشویی سامسونگ",
-      userName: "مجید سجادی فرد",
-      submittedDate: "5 مهر 1395",
-      description: `
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-              استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-              ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
-              و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای
-              زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و
-           `,
-      color: "آبی",
-      shop: "دیجی کالا",
-    },
-    {
-      id: 301,
-      productName: "تلویزیون سامسونگ",
-      userName: "فرید سجادی ",
-      submittedDate: "10 دی 1395",
-      description: `
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-              استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-              ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
-              و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای
-              زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و
-           `,
-      color: "مشکی",
-      shop: "دیجی کالا",
-    },
-  ];
+import { ProductType } from "@/types/GlobalTypes";
+
+interface Props {
+  product: ProductType;
+}
+
+export const Comments = ({ product }: Props) => {
   return (
     <div className=" mx-3">
       <div className="m-8">
@@ -73,31 +25,77 @@ export const Comments = () => {
           امتیاز کاربران به:
         </h2>
         <h1 className="md:text-lg text-[#666] font-semibold border-b border-gray-100 py-2 m-2">
-          گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
-          128گیگابایت
+          {product.productName}
+          {product.productTitle}
         </h1>
       </div>
       <div className="grid md:grid-cols-2 place-items-center">
+        {/* product-dising */}
         <div className="w-full md:w-5/6 md:m-3 p-3 bg-gray-50">
-          {progressData.map((data) => (
-            <div
-              key={data.id}
-              className="flex justify-start items-center gap-3 p-3"
-            >
-              <div className="max-md:text-xs text-sm w-1/4 ml-auto">{data.label}</div>
-              <div className="w-2/4 bg-gray-200 rounded-full h-1">
-                <div
-                  className="bg-mainRed h-1 rounded-full"
-                  style={{ width: `${data.percentage}%` }}
-                ></div>
-              </div>
-              <span className="text-sm font-medium text-mainRed">
-                {data.percentage}%
-              </span>
+          <div className="flex justify-start items-center gap-3 p-3">
+            <div className="max-md:text-xs text-sm w-1/4 ml-auto">طراحی</div>
+            <div className="w-2/4 bg-gray-200 rounded-full h-1">
+              <div
+                className="bg-mainRed h-1 rounded-full"
+                style={{ width: `${product.productDesign}%` }}
+              ></div>
             </div>
-          ))}
+            <span className="text-sm font-medium text-mainRed">
+              {product.productDesign}%
+            </span>
+          </div>
+        </div>{" "}
+        {/* product-productPurchaseValue*/}
+        <div className="w-full md:w-5/6 md:m-3 p-3 bg-gray-50">
+          <div className="flex justify-start items-center gap-3 p-3">
+            <div className="max-md:text-xs text-sm w-1/4 ml-auto">
+              ارزش خرید
+            </div>
+            <div className="w-2/4 bg-gray-200 rounded-full h-1">
+              <div
+                className="bg-mainRed h-1 rounded-full"
+                style={{ width: `${product.productPurchaseValue}%` }}
+              ></div>
+            </div>
+            <span className="text-sm font-medium text-mainRed">
+              {product.productPurchaseValue}%
+            </span>
+          </div>
+        </div>{" "}
+        {/* product-productBuildQuality */}
+        <div className="w-full md:w-5/6 md:m-3 p-3 bg-gray-50">
+          <div className="flex justify-start items-center gap-3 p-3">
+            <div className="max-md:text-xs text-sm w-1/4 ml-auto">
+              کیفیت ساخت
+            </div>
+            <div className="w-2/4 bg-gray-200 rounded-full h-1">
+              <div
+                className="bg-mainRed h-1 rounded-full"
+                style={{ width: `${product.productBuildQuality}%` }}
+              ></div>
+            </div>
+            <span className="text-sm font-medium text-mainRed">
+              {product.productBuildQuality}%
+            </span>
+          </div>
+        </div>{" "}
+        {/* product-productFeatures */}
+        <div className="w-full md:w-5/6 md:m-3 p-3 bg-gray-50">
+          <div className="flex justify-start items-center gap-3 p-3">
+            <div className="max-md:text-xs text-sm w-1/4 ml-auto">
+              امکانات و قابلیت ها
+            </div>
+            <div className="w-2/4 bg-gray-200 rounded-full h-1">
+              <div
+                className="bg-mainRed h-1 rounded-full"
+                style={{ width: `${product.productFeatures}%` }}
+              ></div>
+            </div>
+            <span className="text-sm font-medium text-mainRed">
+              {product.productFeatures}%
+            </span>
+          </div>
         </div>
-
         <div className="">
           <h2 className="md:text-lg text-[#5a5a5a] p-3">
             شما هم می‌توانید در مورد این کالا نظر بدهید.
@@ -135,13 +133,13 @@ export const Comments = () => {
           نظرات کاربران
         </h2>
         <p className="text-lg text-[#000] font-bold py-2 m-2">
-          123 نظر
+          {product.comments.length} نظر
         </p>
       </div>
 
-      {fakeComments.map((comment) => (
+      {product.comments.map((comment, index) => (
         <div
-          key={comment.id}
+          key={index}
           className="border border-gray-200 rounded-lg md:p-5 md:m-5 my-8"
         >
           <div className="grid grid-cols-3 m-5 max-md:grid-cols-1 md:px-5">
@@ -159,32 +157,32 @@ export const Comments = () => {
                 <div className="flex items-center">
                   <span className="w-4 h-4 border border-gray-200 rounded-[5px] bg-[#2196f3]"></span>
                   <span className="pr-4 text-black font-bold">
-                    {comment.color}
+                    {product.productColor}
                   </span>
                 </div>
               </div>
               <div className=" my-7">
-                <div className="font-bold text-black my-2">
-                  خریداری شده از:
-                </div>
+                <div className="font-bold text-black my-2">خریداری شده از:</div>
                 <div className="flex items-center">
                   <BsShop className="w-4 h-4" />
                   <span className="pr-4 text-[#1ca2bd] font-bold">
-                    {comment.shop}
+                    دی دی کالا
                   </span>
                 </div>
               </div>
             </div>
             <div className="col-span-2">
               <h1 className="md:text-lg font-bold text-[#5f5f5f]">
-                {comment.productName}
+                {/* {comment.productName} */}
               </h1>
               <h5 className="text-[#adadad] max-sm:text-xs text-sm pb-4">
                 توسط {comment.userName} در تاریخ{" "}
-                <span>{comment.submittedDate}</span>
+                <span>{comment.commentCreationDateAt}</span>
               </h5>
               <hr />
-              <p className="py-5 sm:text-sm sm:leading-8 text-[13px] leading-7">{comment.description}</p>
+              <p className="py-5 sm:text-sm sm:leading-8 text-[13px] leading-7">
+                {comment.userComment}
+              </p>
             </div>
           </div>
         </div>
