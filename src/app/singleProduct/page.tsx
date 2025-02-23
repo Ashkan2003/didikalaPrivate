@@ -9,12 +9,12 @@ import { IoHeart } from "react-icons/io5";
 const SingleProductPage = () => {
   const productDetails = [
     {
-      id:0,
+      id:1000,
       label: "حافظه داخلی",
       value: "256 گیگابایت"
     },
     {
-      id:1,
+      id:1001,
       label: "شبکه های ارتباطی",
       value: "4G, 3G"
     },

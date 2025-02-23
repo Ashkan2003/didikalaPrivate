@@ -6,28 +6,29 @@ import Image from "next/image";
 export const Comments = () => {
   const progressData = [
     {
-      id:0,
+      id:100,
       label: "طراحی",
       percentage: 45,
     },
     {
-      id:1,
+      id:101,
       label: "ارزش خرید",
       percentage: 20,
     },
     {
-      id:2,
+      id:102,
       label: "کیفیت ساخت",
       percentage: 90,
     },
     {
-      id:3,
+      id:103,
       label: "امکانات و قابلیت ها",
       percentage: 75,
     },
   ];
   const fakeComments = [
     {
+      id: 300,
       productName: "لباسشویی سامسونگ",
       userName: "مجید سجادی فرد",
       submittedDate: "5 مهر 1395",
@@ -42,6 +43,7 @@ export const Comments = () => {
       shop: "دیجی کالا",
     },
     {
+      id: 301,
       productName: "تلویزیون سامسونگ",
       userName: "فرید سجادی ",
       submittedDate: "10 دی 1395",
@@ -137,9 +139,9 @@ export const Comments = () => {
         </p>
       </div>
 
-      {fakeComments.map((comment, index) => (
+      {fakeComments.map((comment) => (
         <div
-          key={index}
+          key={comment.id}
           className="border border-gray-200 rounded-lg md:p-5 md:m-5 my-8"
         >
           <div className="grid grid-cols-3 m-5 max-md:grid-cols-1 md:px-5">
