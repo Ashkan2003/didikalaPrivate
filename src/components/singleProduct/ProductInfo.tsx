@@ -8,8 +8,13 @@ import { RiQuestionnaireLine } from "react-icons/ri";
 import { Specification } from "./SpecificationTab";
 import { Comments } from "./CommentsTab";
 import { FAQ } from "./FAQTab";
+import { ProductType } from "@/types/GlobalTypes";
 
-export const ProductInfo = () => {
+interface Props {
+  product: ProductType;
+}
+
+export const ProductInfo = ({ product }: Props) => {
   const tabsData = [
     {
       label: "نقد و بررسی",
@@ -34,7 +39,7 @@ export const ProductInfo = () => {
   ];
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  
+
   return (
     <>
       <div className="bg-[#FFFFFF] w-full mb-52 rounded-[20px]">
@@ -60,11 +65,18 @@ export const ProductInfo = () => {
         </div>
         <div>
           {activeTabIndex === 0 ? (
-            <Review />
+            <Review
+              productName={product.productName}
+              productTitle={product.productTitle}
+              productDescription={product.productDescription}
+            />
           ) : activeTabIndex === 1 ? (
-            <Specification />
+            <Specification
+              productName={product.productName}
+              productTitle={product.productTitle}
+            />
           ) : activeTabIndex === 2 ? (
-            <Comments />
+            <Comments product={product} />
           ) : (
             <FAQ />
           )}

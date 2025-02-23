@@ -37,25 +37,28 @@ export type ProductType = {
   productTitle: string;
   productTotalRate: number;
 
-  comments: {
-    commentCreationDateAt: string;
-    commentId: string;
-    commentRate: number;
-    productId: string;
-    userComment: string;
-    userName: string;
-  }[];
+  comments: ProductCommentType[];
+  faqs: ProductFaqType[];
+};
 
-  faqs: {
+export type ProductCommentType = {
+  commentCreationDateAt: string;
+  commentId: string;
+  commentRate: number;
+  productId: string;
+  userComment: string;
+  userName: string;
+};
+
+export type ProductFaqType = {
+  faqId: string;
+  productId: string;
+  question: string;
+  userName: string;
+  answers: {
+    answerFaq: string;
+    answerId: string;
+    faq: null;
     faqId: string;
-    productId: string;
-    question: string;
-    userName: string;
-    answers: {
-      answerFaq: string;
-      answerId: string;
-      faq: null;
-      faqId: string;
-    }[];
   }[];
 };
