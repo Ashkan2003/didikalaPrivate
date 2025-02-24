@@ -1,24 +1,46 @@
+"use client";
+import React from "react";
 import ImgSlider from "@/components/singleProduct/ImgSlider";
 import { ProductInfo } from "@/components/singleProduct/ProductInfo";
+import { useGetProductById } from "@/reactQuery/product/useGetProductById";
 import Image from "next/image";
-import React from "react";
 import { BsCart3 } from "react-icons/bs";
 import { IoHeart } from "react-icons/io5";
+import FullPageSpinner from "../global/FullPageSpinner";
+import Error from "next/error";
 
+const productDetails = [
+  {
+    id: 0,
+    label: "حافظه داخلی",
+    value: "256 گیگابایت",
+  },
+  {
+    id: 1,
+    label: "شبکه های ارتباطی",
+    value: "4G, 3G",
+  },
+];
 
-const SingleProductPage = () => {
-  const productDetails = [
-    {
-      id:0,
-      label: "حافظه داخلی",
-      value: "256 گیگابایت"
-    },
-    {
-      id:1,
-      label: "شبکه های ارتباطی",
-      value: "4G, 3G"
-    },
-  ];
+interface Props {
+  productId: string;
+}
+
+const SingleProductInfo = ({ productId }: Props) => {
+  const { product, productStatus, productError } = useGetProductById(productId);
+
+  if (productStatus == "pending") return <FullPageSpinner />;
+
+  if (productStatus == "error" || !product) {
+    console.log(productError, "an error accured in singleProductPage");
+    return (
+      <Error
+        statusCode={400}
+        withDarkMode={false}
+        title="...   در لود محصول مورد نظر خطایی رخ داد "
+      />
+    );
+  }
   return (
     <>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 my-4 lg:mx-6 sm:mx-4">
@@ -77,8 +99,9 @@ const SingleProductPage = () => {
           <>
             <div className="border-b border-[#f2f2f2] m-2 my-8">
               <h1 className="text-gray-500 text-lg pb-5">
-                گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت
-                128گیگابایت
+                {product?.productName}
+                {"  "}
+                {product?.productTitle}
               </h1>
             </div>
             <div className="m-3">
@@ -163,7 +186,7 @@ const SingleProductPage = () => {
                 priority // Ensures faster LCP by preloading the image
               />
               <h2 className="inline text-sm font-semibold text-gray-500">
-                کد محصول: <span>225566</span>
+                کد محصول: <span>{product?.productCode}</span>
               </h2>
             </div>
             <div className="m-3">
@@ -177,8 +200,9 @@ const SingleProductPage = () => {
               />
               <h2 className="inline text-gray-500">
                 قیمت :
-                <span className="font-extrabold text-3xl text-black max-sm:text-lg">
-                  ۳,۵۶۰,۰۰۰ تومان
+                <span className="font-semibold text-2xl text-black max-sm:text-md">
+                  {" "}
+                  {product?.productPrice} تومان
                 </span>
               </h2>
             </div>
@@ -201,15 +225,15 @@ const SingleProductPage = () => {
         </div>
       </div>
       <div className="max-w-[1400px] max-lg:max-w-7xl max-md:max-w-2xl mx-auto">
-        <ProductInfo />
+        <ProductInfo product={product} />
       </div>
 
       <button className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] h-14 bg-mainRed text-white flex items-center justify-center md:hidden shadow-xl rounded-xl z-50">
-        <BsCart3 className="text-xl ml-2"/>
+        <BsCart3 className="text-xl ml-2" />
         افزودن به سبد خرید
       </button>
     </>
   );
 };
 
-export default SingleProductPage;
+export default SingleProductInfo;

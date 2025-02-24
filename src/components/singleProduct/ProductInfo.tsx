@@ -8,8 +8,13 @@ import { RiQuestionnaireLine } from "react-icons/ri";
 import { Specification } from "./SpecificationTab";
 import { Comments } from "./CommentsTab";
 import { FAQ } from "./FAQTab";
+import { ProductType } from "@/types/GlobalTypes";
 
-export const ProductInfo = () => {
+interface Props {
+  product: ProductType;
+}
+
+export const ProductInfo = ({ product }: Props) => {
   const tabsData = [
     {
       label: "نقد و بررسی",
@@ -34,22 +39,22 @@ export const ProductInfo = () => {
   ];
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  
+
   return (
     <>
       <div className="bg-[#FFFFFF] w-full mb-52 rounded-[20px]">
         <div className="">
           <div className="flex max-sm:flex-wrap pt-9 border-b border-gray-200">
-            {tabsData.map((tab, indx) => {
+            {tabsData.map((tab) => {
               return (
                 <button
-                  key={indx}
+                  key={tab.index}
                   className={`text-gray-rgba md:px-8 sm:px-6 h-10 rounded-t-[20px] text-md max-sm:m-2 max-sm:text-sm ${
-                    indx === activeTabIndex
+                    tab.index === activeTabIndex
                       ? "border-b-2 border-black"
                       : "hover: border-b-2 hover:border-black"
                   }`}
-                  onClick={() => setActiveTabIndex(indx)}
+                  onClick={() => setActiveTabIndex(tab.index)}
                 >
                   <tab.icon className="inline ml-2" />
                   {tab.label}
@@ -60,11 +65,18 @@ export const ProductInfo = () => {
         </div>
         <div>
           {activeTabIndex === 0 ? (
-            <Review />
+            <Review
+              productName={product.productName}
+              productTitle={product.productTitle}
+              productDescription={product.productDescription}
+            />
           ) : activeTabIndex === 1 ? (
-            <Specification />
+            <Specification
+              productName={product.productName}
+              productTitle={product.productTitle}
+            />
           ) : activeTabIndex === 2 ? (
-            <Comments />
+            <Comments product={product} />
           ) : (
             <FAQ />
           )}
