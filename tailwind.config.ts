@@ -23,6 +23,10 @@ export default {
         secondBlack:"#495057",
 
       },
+      screens: {
+        xs: "576px", // Custom breakpoint
+        xxs: "481px",//custom breakpoint 2
+      },
     },
   },
   plugins: [],
