@@ -2,21 +2,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { useForm, SubmitHandler, FormState } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import FormFooter from "@/components/FormFooter";
-
 
 const WelcomePage = () => {
   interface RegisterValueInputs {
-    userName:string;
-    phoneNumber:number;
+    userName: string;
+    phoneNumber: number;
     email: string;
     password: string;
   }
 
-  const { register, handleSubmit, formState } = useForm<RegisterValueInputs>();
-
-  const { errors } = formState;
+  const { handleSubmit } = useForm<RegisterValueInputs>();
 
   const onSubmit: SubmitHandler<RegisterValueInputs> = (data) => {
     console.log(data);
@@ -45,18 +42,22 @@ const WelcomePage = () => {
                     به دیدیکالا خوش آمدید
                   </h2>
                 </div>
-                
+
                 <div className="flex justify-center items-center mt-6 mb-3">
-                <FaRegCircleUser className=" font-thin bg-[#edf0f5] text-[#ABABAB] rounded-[500px] w-24 h-24 p-6 "/>
+                  <FaRegCircleUser className=" font-thin bg-[#edf0f5] text-[#ABABAB] rounded-[500px] w-24 h-24 p-6 " />
                 </div>
-                
-                    <h5 className="text-center font-bold text-xl max-sm:text-lg">حساب کاربری شما در دیدیکالا ساخته شد</h5>
-                
+
+                <h5 className="text-center font-bold text-xl max-sm:text-lg">
+                  حساب کاربری شما در دیدیکالا ساخته شد
+                </h5>
+
                 {/* login form inputs */}
                 <div>
                   <div className=" rounded-lg py-4 px-5 bg-[#f9f7d8] border border-[#f6e8a1] mt-4 mx-6 mb-3 text-justify">
                     <p className="text-sm text-[#a37731]">
-                    اکنون می‌توانید به صفحه‌ای که در آن بودید بازگردید و یا با تکمیل اطلاعات حساب کاربری خود به کلیه امکانات و سرویس‌های تاپ کالا و سرویس‌های وابسته به آن دسترسی داشته باشید
+                      اکنون می‌توانید به صفحه‌ای که در آن بودید بازگردید و یا با
+                      تکمیل اطلاعات حساب کاربری خود به کلیه امکانات و سرویس‌های
+                      تاپ کالا و سرویس‌های وابسته به آن دسترسی داشته باشید
                     </p>
                   </div>
                   <form
@@ -64,7 +65,6 @@ const WelcomePage = () => {
                     action=""
                     className="flex-col space-y-5 p-5 max-w-[440px] mx-auto"
                   >
-                 
                     <div className="flex items-center justify-center">
                       <button className="w-52 p-3 h-10 relative flex items-center justify-center rounded-xl bg-mainRed overflow-hidden md:flex group">
                         {/* Expanding Light Red Background */}
@@ -77,7 +77,7 @@ const WelcomePage = () => {
 
                         {/* Button Text */}
                         <div className="flex-grow flex justify-center items-center text-white pr-8 z-10">
-                            تکمیل حساب کاربری
+                          تکمیل حساب کاربری
                         </div>
                       </button>
                     </div>
@@ -91,7 +91,7 @@ const WelcomePage = () => {
                         className="text-mainRed border-b border-dashed border-mainRed font-bold mr-3 pb-1 text-sm"
                         href={"#"}
                       >
-                        وارد شوید 
+                        وارد شوید
                       </Link>
                     </div>
                   </div>
@@ -99,7 +99,7 @@ const WelcomePage = () => {
               </div>
             </div>
             {/* login footer */}
-            <FormFooter/>
+            <FormFooter />
           </div>
         </div>
       </main>

@@ -5,9 +5,9 @@ import { HiMiniArrowRightStartOnRectangle } from "react-icons/hi2";
 import { SlLock } from "react-icons/sl";
 import { BsCheckLg } from "react-icons/bs";
 import { useState } from "react";
-import { useForm, SubmitHandler, FormState } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { MdOutlineLockReset } from "react-icons/md";
-import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import FormFooter from "@/components/FormFooter";
 
 const ChangePassword = () => {
@@ -17,7 +17,7 @@ const ChangePassword = () => {
     confirmPassword: string;
   }
 
-  const { register, handleSubmit, formState, watch, control } =
+  const { register, handleSubmit, formState, watch } =
     useForm<PasswordValueInputs>();
 
   const { errors } = formState;
@@ -38,17 +38,21 @@ const ChangePassword = () => {
   };
 
   const [enteredPreviousPassword, setEnteredPreviousPassword] = useState(false);
-  const handlePreviousPasswordChange = (e) => {
+  const handlePreviousPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setEnteredPreviousPassword(e.target.value.length > 0);
   };
 
   const [enteredNewPassword, setEnteredNewPassword] = useState(false);
-  const handleNewPasswordChange = (e) => {
+  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredNewPassword(e.target.value.length > 0);
   };
 
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState(false);
-  const handleConfirmPasswordChange = (e) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setEnteredConfirmPassword(e.target.value.length > 0);
   };
 
@@ -94,8 +98,10 @@ const ChangePassword = () => {
                         رمز عبور قبلی
                       </label>
                       <input
-                        type={showPreviousPassword === false ? "password" : "text"}
-                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded rounded-lg focus:outline-none"
+                        type={
+                          showPreviousPassword === false ? "password" : "text"
+                        }
+                        className="border border-[#eee] pr-2 w-full h-11 mt-3  rounded-lg focus:outline-none"
                         placeholder="رمز عبور قبلی خود را وارد نمایید"
                         {...register("previousPassword", {
                           required: "این فیلد اجباری است.",
@@ -107,7 +113,9 @@ const ChangePassword = () => {
                             message: "حد اکثر تعداد کاراکتر 20 می باشد.",
                             value: 20,
                           },
-                          onChange:(e)=>{handlePreviousPasswordChange(e)}
+                          onChange: (e) => {
+                            handlePreviousPasswordChange(e);
+                          },
                         })}
                       />
                       <div className="absolute inset-y-12 text-xl text-[#979797] left-0 pl-3 ">
@@ -140,7 +148,7 @@ const ChangePassword = () => {
                       </label>
                       <input
                         type={showNewPassword === false ? "password" : "text"}
-                        className="border border-[#eee] w-full h-11 pr-2 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] w-full h-11 pr-2 mt-3  rounded-lg focus:outline-none"
                         placeholder="رمز عبور جدید خود را وارد نمایید"
                         {...register("newPassword", {
                           required: "این فیلد اجباری است.",
@@ -152,7 +160,9 @@ const ChangePassword = () => {
                             message: "حد اکثر تعداد کاراکتر 20 می باشد.",
                             value: 20,
                           },
-                          onChange:(e)=>{handleNewPasswordChange(e)}
+                          onChange: (e) => {
+                            handleNewPasswordChange(e);
+                          },
                         })}
                       />
                       <div className="absolute  inset-y-12 text-xl text-[#979797] left-0 pl-3">
@@ -169,9 +179,7 @@ const ChangePassword = () => {
                               <AiFillEye />
                             )}
                           </div>
-                        )
-
-                        }
+                        )}
                       </div>
                       <p className="text-red-600 text-sm pt-1">
                         {errors?.newPassword?.message}
@@ -185,8 +193,10 @@ const ChangePassword = () => {
                         تکرار رمز عبور جدید
                       </label>
                       <input
-                        type={showConfirmPassword === false ? "password" : "text"}
-                        className="border border-[#eee] w-full h-11 pr-2 mt-3 rounded rounded-lg focus:outline-none"
+                        type={
+                          showConfirmPassword === false ? "password" : "text"
+                        }
+                        className="border border-[#eee] w-full h-11 pr-2 mt-3  rounded-lg focus:outline-none"
                         placeholder="رمز عبور جدید خود را تکرار نمایید"
                         {...register("confirmPassword", {
                           required: "این فیلد اجباری است.",
@@ -198,7 +208,9 @@ const ChangePassword = () => {
                             message: "حد اکثر تعداد کاراکتر 20 می باشد.",
                             value: 20,
                           },
-                          onChange:(e)=>{handleConfirmPasswordChange(e)},
+                          onChange: (e) => {
+                            handleConfirmPasswordChange(e);
+                          },
                           validate: (value: string) => {
                             if (watch("newPassword") != value) {
                               return "پسورد شما همخوانی ندارد.";
@@ -273,7 +285,7 @@ const ChangePassword = () => {
               </div>
             </div>
             {/* login footer */}
-            <FormFooter/>
+            <FormFooter />
           </div>
         </div>
       </main>

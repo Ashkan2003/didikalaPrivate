@@ -1,6 +1,5 @@
 "use client";
 
-import { url } from "inspector";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -293,21 +292,17 @@ const PageFaq = () => {
                 </div>
               </div>
             </div>
-              
+
             <div className="my-16 max-sm:w-full max-sm:rounded-none relative bg-[url('/imgs/page-cover-faq.jpg')] inset-0 bg-cover bg-top rounded-3xl h-[430px] bg-black/60 bg-blend-multiply">
-                <div className="grid-cols-12">
-                  <div className="w-full tracking-wide pb-8 max-xxs:pb-11 pt-14 font-bold text-3xl max-xxs:text-lg text-[#fff] col-span-12 flex-col flex justify-center items-center">
-                    <p>
-                    جواب یا پرسش خود را پیدا نکردید؟
-                    </p>
-                    <p>
-                    روش‌های ارتباط با ما
-                    </p>
-                  </div>
-                  <div className="flex justify-center max-md:flex-col max-md:justify-center max-md:items-center ">
+              <div className="grid-cols-12">
+                <div className="w-full tracking-wide pb-8 max-xxs:pb-11 pt-14 font-bold text-3xl max-xxs:text-lg text-[#fff] col-span-12 flex-col flex justify-center items-center">
+                  <p>جواب یا پرسش خود را پیدا نکردید؟</p>
+                  <p>روش‌های ارتباط با ما</p>
+                </div>
+                <div className="flex justify-center max-md:flex-col max-md:justify-center max-md:items-center ">
                   <div className="col-span-6 w-1/2 flex flex-col space-y-7 justify-center items-center">
                     <div className="relative w-[70px] h-[70px] max-xxs:w-[50px] max-xxs:h-[50px] ">
-                    <Image fill src={'/imgs/phone.svg'} alt="phone"></Image>
+                      <Image fill src={"/imgs/phone.svg"} alt="phone"></Image>
                     </div>
                     <div className="flex gap-x-5 max-xxs:gap-x-1 font-semibold text-base text-[#fff] ">
                       <div>تماس تلفنی</div>
@@ -315,19 +310,19 @@ const PageFaq = () => {
                     </div>
                   </div>
                   <div className="col-span-6 w-1/2 flex flex-col space-y-7 justify-center items-center">
-                  <div className="relative w-[70px] h-[70px]  max-xxs:w-[50px] max-xxs:h-[50px] ">
-                    <Image fill src={'/imgs/email.svg'} alt="email"></Image>
+                    <div className="relative w-[70px] h-[70px]  max-xxs:w-[50px] max-xxs:h-[50px] ">
+                      <Image fill src={"/imgs/email.svg"} alt="email"></Image>
                     </div>
                     <div className="">
-                      <button className="bg-[#3abaf4] hover:bg-[#1ea5e3] text-xs px-4 py-3 w-24 rounded-lg text-[#fff]">ارسال پیام</button>
+                      <button className="bg-[#3abaf4] hover:bg-[#1ea5e3] text-xs px-4 py-3 w-24 rounded-lg text-[#fff]">
+                        ارسال پیام
+                      </button>
                     </div>
                   </div>
                 </div>
-                  </div>
-                  
               </div>
+            </div>
           </div>
-          
         </div>
       </main>
     </>

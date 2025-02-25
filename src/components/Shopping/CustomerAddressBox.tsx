@@ -7,7 +7,7 @@ interface CustomerAddressBoxProps {
   setIsEditAddressOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function CustomerAddressBox({ isDeleteOpen, setIsDeleteOpen, isEditAddressOpen, setIsEditAddressOpen }: CustomerAddressBoxProps) {
+function CustomerAddressBox({ setIsDeleteOpen,  setIsEditAddressOpen }: CustomerAddressBoxProps) {
 
   return (
     <>

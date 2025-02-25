@@ -5,17 +5,16 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { SlLock } from "react-icons/sl";
 import { BsCheckLg } from "react-icons/bs";
 import { useState } from "react";
-import { useForm, SubmitHandler, FormState } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { MdPhoneAndroid } from "react-icons/md";
 import { TfiEmail } from "react-icons/tfi";
-import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import FormFooter from "@/components/FormFooter";
-
 
 const Register = () => {
   interface RegisterValueInputs {
-    userName:string;
-    phoneNumber:number;
+    userName: string;
+    phoneNumber: number;
     email: string;
     password: string;
   }
@@ -30,7 +29,7 @@ const Register = () => {
   };
 
   const [enteredPassword, setEnteredPassword] = useState(false);
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredPassword(e.target.value.length > 0);
   };
 
@@ -65,7 +64,8 @@ const Register = () => {
                 <div>
                   <div className=" rounded-lg py-4 px-5 bg-[#f9f7d8] border border-[#f6e8a1] mt-4 mx-6 mb-3 text-justify">
                     <p className="text-sm text-[#a37731]">
-                      اگر قبلا با ایمیل ثبت‌نام کرده‌اید، نیاز به ثبت‌نام مجدد با شماره همراه ندارید
+                      اگر قبلا با ایمیل ثبت‌نام کرده‌اید، نیاز به ثبت‌نام مجدد
+                      با شماره همراه ندارید
                     </p>
                   </div>
                   <form
@@ -82,7 +82,7 @@ const Register = () => {
                       </label>
                       <input
                         type="text"
-                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] pr-2 w-full h-11 mt-3  rounded-lg focus:outline-none"
                         placeholder="نام کاربری خود را وارد نمایید"
                         {...register("userName", {
                           required: "این فیلد اجباری است.",
@@ -104,7 +104,7 @@ const Register = () => {
                       </label>
                       <input
                         type="number"
-                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] pr-2 w-full h-11 mt-3  rounded-lg focus:outline-none"
                         placeholder="شماره موبایل خود را وارد نمایید"
                         {...register("phoneNumber", {
                           required: "این فیلد اجباری است.",
@@ -126,7 +126,7 @@ const Register = () => {
                       </label>
                       <input
                         type="email"
-                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] pr-2 w-full h-11 mt-3  rounded-lg focus:outline-none"
                         placeholder="ایمیل خود را وارد نمایید"
                         {...register("email", {
                           required: "این فیلد اجباری است.",
@@ -149,7 +149,7 @@ const Register = () => {
                       </label>
                       <input
                         type={showPassword === false ? "password" : "text"}
-                        className="border border-[#eee] w-full h-11 pr-2 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] w-full h-11 pr-2 mt-3rounded-lg focus:outline-none"
                         placeholder="رمز عبور خود را وارد نمایید"
                         {...register("password", {
                           required: "این فیلد اجباری است.",
@@ -161,7 +161,9 @@ const Register = () => {
                             message: "حد اکثر تعداد کاراکتر 20 می باشد.",
                             value: 20,
                           },
-                          onChange:(e)=>{handlePasswordChange(e)}
+                          onChange: (e) => {
+                            handlePasswordChange(e);
+                          },
                         })}
                       />
                       <div className="absolute  inset-y-12 text-lg text-[#979797] left-0 pl-3">
@@ -193,7 +195,10 @@ const Register = () => {
 
                         <BsCheckLg className="absolute pr-[2px] text-white text-sm hidden peer-checked:block pointer-events-none" />
                         <span className="pr-3 text-justify pt-[2px] text-sm text-gray-800 inline-block">
-                           <span className="text-[#007bff] ">حریم خصوصی</span > و <span className="text-[#007bff]">شرایط و قوانین</span> استفاده از سرویس های سایت دیدیکالا را مطالعه نموده و با کلیه موارد آن موافقم.
+                          <span className="text-[#007bff] ">حریم خصوصی</span> و{" "}
+                          <span className="text-[#007bff]">شرایط و قوانین</span>{" "}
+                          استفاده از سرویس های سایت دیدیکالا را مطالعه نموده و
+                          با کلیه موارد آن موافقم.
                         </span>
                       </label>
                     </div>
@@ -223,7 +228,7 @@ const Register = () => {
                         className="text-mainRed border-b border-dashed border-mainRed font-bold mr-3 pb-1 text-sm"
                         href={"#"}
                       >
-                        وارد شوید 
+                        وارد شوید
                       </Link>
                     </div>
                   </div>
@@ -231,7 +236,7 @@ const Register = () => {
               </div>
             </div>
             {/* login footer */}
-            <FormFooter/>
+            <FormFooter />
           </div>
         </div>
       </main>

@@ -1,3 +1,4 @@
+import { ProductCartType } from "@/types/GlobalTypes";
 import Image from "next/image";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";

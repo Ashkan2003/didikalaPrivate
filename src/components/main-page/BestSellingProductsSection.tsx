@@ -2,7 +2,6 @@
 
 import React from "react";
 import ProductCart from "../global/ProductCart";
-import { ProductCartType } from "@/types/GlobalTypes";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,58 +12,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { FaCircle } from "react-icons/fa";
-const productCartList: ProductCartType[] = [
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 3090000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 2990000,
-    cartImg: "/imgs/product-1.jpg",
-  },
-  {
-    cartTitle: "کت مردانه",
-    cartRate: 4,
-    productPrice: 1990000,
-    cartImg: "/imgs/013.jpg",
-  },
-];
+import { useProducts } from "@/reactQuery/product/useGetProducts";
+import MiniSpinner from "../global/MiniSpinner";
 
 const BestSellingProductsSection = () => {
+  const { products, status } = useProducts();
+
+  if (status == "error") {
+    console.log("error on load products");
+  }
+
   return (
     <div className=" relative bg-white  px-4 border-gray-100 border-2 rounded-xl sm:px-16 pb-12 sm:mx-16 ">
       <div className="flex items-center pt-5 pb-6">
@@ -111,11 +68,15 @@ const BestSellingProductsSection = () => {
             },
           }}
         >
-          {productCartList.map((productCart, index) => (
-            <SwiperSlide className="py-2" key={index}>
-              <ProductCart productCart={productCart} />
-            </SwiperSlide>
-          ))}
+          {status === "pending" ? (
+            <MiniSpinner />
+          ) : (
+            products?.map((productCart, index) => (
+              <SwiperSlide className="py-2" key={index}>
+                <ProductCart productCart={productCart} />
+              </SwiperSlide>
+            ))
+          )}
         </Swiper>
       </div>
     </div>

@@ -5,11 +5,10 @@ import { HiMiniArrowRightStartOnRectangle } from "react-icons/hi2";
 import { SlLock } from "react-icons/sl";
 import { BsCheckLg } from "react-icons/bs";
 import { useState } from "react";
-import { useForm, SubmitHandler, FormState } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { TfiEmail } from "react-icons/tfi";
-import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import FormFooter from "@/components/FormFooter";
-
 
 const Login = () => {
   interface loginValueInputs {
@@ -27,7 +26,7 @@ const Login = () => {
   };
 
   const [enteredPassword, setEnteredPassword] = useState(false);
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredPassword(e.target.value.length > 0);
   };
 
@@ -74,7 +73,7 @@ const Login = () => {
                       </label>
                       <input
                         type="email"
-                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] pr-2 w-full h-11 mt-3 rounded  focus:outline-none"
                         placeholder="ایمیل خود را وارد نمایید"
                         {...register("email", {
                           required: "این فیلد اجباری است.",
@@ -97,7 +96,7 @@ const Login = () => {
                       </label>
                       <input
                         type={showPassword === false ? "password" : "text"}
-                        className="border border-[#eee] w-full h-11 pr-2 mt-3 rounded rounded-lg focus:outline-none"
+                        className="border border-[#eee] w-full h-11 pr-2 mt-3 rounded focus:outline-none"
                         placeholder="رمز عبور خود را وارد نمایید"
                         {...register("password", {
                           required: "این فیلد اجباری است.",
@@ -109,7 +108,9 @@ const Login = () => {
                             message: "حد اکثر تعداد کاراکتر 20 می باشد.",
                             value: 20,
                           },
-                          onChange:(e)=>{handlePasswordChange(e)}
+                          onChange: (e) => {
+                            handlePasswordChange(e);
+                          },
                         })}
                       />
                       <div className="absolute  inset-y-12 text-lg text-[#979797] left-0 pl-3">
@@ -179,7 +180,7 @@ const Login = () => {
               </div>
             </div>
             {/* login footer */}
-            <FormFooter/>
+            <FormFooter />
           </div>
         </div>
       </main>

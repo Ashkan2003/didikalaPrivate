@@ -7,10 +7,10 @@ export type ProductsCategoryType = {
 };
 
 export type ProductCartType = {
-  cartRate: number;
+  cartRate?: number;
   cartImg: string;
   cartTitle: string;
-  productPrice: number;
+  productPrice?: number;
 };
 
 export type ProductImageType = {

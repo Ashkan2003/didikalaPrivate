@@ -2,7 +2,6 @@
 
 import React from "react";
 import ProductCart from "../global/ProductCart";
-import { ProductCartType } from "@/types/GlobalTypes";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,7 +20,7 @@ interface Props {
 }
 
 const AmazingOfferSection = ({ bgColor }: Props) => {
-  const { products, isLoadingProducts, error, status } = useProducts();
+  const { products, status } = useProducts();
 
   if (status == "error") {
     console.log("error on load products");
