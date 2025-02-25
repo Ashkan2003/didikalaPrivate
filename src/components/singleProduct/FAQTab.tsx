@@ -3,8 +3,13 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MdQuestionMark } from "react-icons/md";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { ProductFaqType } from "@/types/GlobalTypes";
 
-export const FAQ = () => {
+interface Props {
+  productFaqList: ProductFaqType[];
+}
+
+export const FAQ = ({ productFaqList }: Props) => {
   type FormValuesType = {
     productDescription: string;
     checkboxNotification: boolean;
@@ -61,63 +66,59 @@ export const FAQ = () => {
         </div>
         {/* questions and answer */}
         <div>
-          <p className="font-bold mr-8 md:text-lg">123 پرسش</p>
-          <ul>
-            <li>
-              <div className="border border-slate-100 md:m-10 md:p-8 my-12 m-6 px-3 p-5 relative rounded-lg max-sm:text-[13px]">
-                <div className="bg-[#4ae3f3] w-12 h-12 rounded-md flex items-center justify-center absolute -top-8 -right-5">
-                  <MdQuestionMark className="text-white text-2xl" />
-                </div>
-                <div className="md:pb-4 pb-1 flex justify-between border-b border-gray-100">
-                  <div>
-                    <span className="text-black font-bold text-base">حسن </span>
-                    <span className="text-gray-400">گفت:</span>
-                  </div>
-                  <div className="text-blue-400 text-xs">
-                    اسفند ۲۰, ۱۳۹۶ در ۹:۴۱ ب.ظ
-                  </div>
-                </div>
-                <div className="py-4 leading-8">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                  کاربردی می باشد.
-                </div>
-                <span className="text-mainBlue border-b border-dashed border-mainBlue">
-                  پاسخ
-                </span>
-              </div>
-            </li>
-            <ul>
+          <p className="font-bold mr-8 md:text-lg">
+            {productFaqList.length} پرسش
+          </p>
+          {productFaqList.map((faq, index) => (
+            <ul key={index}>
               <li>
-                <div className="border border-slate-100 md:m-10 md:p-8 my-8 m-6 p-4 relative md:mr-20 rounded-lg max-sm:text-[13px]">
-                  <div className="bg-[#c1ff26] w-12 h-12 rounded-md flex items-center justify-center absolute -top-8 -right-5 border border-lime-100">
-                    <HiOutlineLightBulb className="text-green-800 text-3xl" />
+                <div className="border border-slate-100 md:m-10 md:p-8 my-12 m-6 px-3 p-5 relative rounded-lg max-sm:text-[13px]">
+                  <div className="bg-[#4ae3f3] w-12 h-12 rounded-md flex items-center justify-center absolute -top-8 -right-5">
+                    <MdQuestionMark className="text-white text-2xl" />
                   </div>
                   <div className="md:pb-4 pb-1 flex justify-between border-b border-gray-100">
                     <div>
-                      <span className="text-black font-bold">صبا </span>
+                      <span className="text-black font-bold text-base pe-2">
+                        {faq.userName}
+                      </span>
                       <span className="text-gray-400">گفت:</span>
                     </div>
-                    <div className="text-blue-400 text-sm">
+                    {/* <div className="text-blue-400 text-xs">
                       اسفند ۲۰, ۱۳۹۶ در ۹:۴۱ ب.ظ
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="py-4 leading-8">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
-                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                    کاربردی می باشد.
-                  </div>
+                  <div className="py-4 leading-8">{faq.question}</div>
                   <span className="text-mainBlue border-b border-dashed border-mainBlue">
                     پاسخ
                   </span>
                 </div>
               </li>
+              {faq.answers.map((answer, index) => (
+                <ul key={index}>
+                  <li>
+                    <div className="border border-slate-100 md:m-10 md:p-8 my-8 m-6 p-4 relative md:mr-20 rounded-lg max-sm:text-[13px]">
+                      <div className="bg-[#c1ff26] w-12 h-12 rounded-md flex items-center justify-center absolute -top-8 -right-5 border border-lime-100">
+                        <HiOutlineLightBulb className="text-green-800 text-3xl" />
+                      </div>
+                      <div className="md:pb-4 pb-1 flex justify-between border-b border-gray-100">
+                        <div>
+                          {/* <span className="text-black font-bold">صبا </span> */}
+                          <span className="text-gray-400">پاسخ</span>
+                        </div>
+                        {/* <div className="text-blue-400 text-sm">
+                          اسفند ۲۰, ۱۳۹۶ در ۹:۴۱ ب.ظ
+                        </div> */}
+                      </div>
+                      <div className="py-4 leading-8">{answer.answerFaq}</div>
+                      {/* <span className="text-mainBlue border-b border-dashed border-mainBlue">
+                        پاسخ
+                      </span> */}
+                    </div>
+                  </li>
+                </ul>
+              ))}
             </ul>
-          </ul>
+          ))}
         </div>
       </div>
     </>

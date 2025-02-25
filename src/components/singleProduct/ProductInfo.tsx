@@ -78,7 +78,7 @@ export const ProductInfo = ({ product }: Props) => {
           ) : activeTabIndex === 2 ? (
             <Comments product={product} />
           ) : (
-            <FAQ />
+            <FAQ productFaqList={product.faqs} />
           )}
         </div>
       </div>
