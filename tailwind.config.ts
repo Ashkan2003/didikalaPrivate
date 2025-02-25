@@ -15,13 +15,18 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         mainRed: "#f7858d",
-        mainBlue:"#009ec9",
+        mainBlue: "#009ec9",
+        mainLightBlue: "#00bfd6",
         mainGray:"#515151",
         lightGray:"#676767",
         secondLightGray:'#818181',
         mainBlack:"#212529",
         secondBlack:"#495057",
 
+      },
+      screens: {
+        xs: "576px", // Custom breakpoint
+        xxs: "481px",//custom breakpoint 2
       },
     },
   },

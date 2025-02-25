@@ -3,7 +3,6 @@ import CartTabs from "@/components/CartTabs";
 import CostCart from "@/components/CostCart";
 import Image from "next/image";
 import EmptyShoppingCart from "@/components/EmptyShoppingCart";
-import { initCustomTraceSubscriber } from "next/dist/build/swc/generated-native";
 
 const UserShoppingCartPage = () => {
   //redux

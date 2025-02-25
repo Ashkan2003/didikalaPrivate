@@ -66,8 +66,8 @@ export const Specification = ({ productName, productTitle }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(specifications).map(([key, value]) => (
-            <tr key={key} className="bg-white">
+          {Object.entries(specifications).map(([key, value], index) => (
+            <tr key={`${key}-${index}`} className="bg-white">
               <th
                 scope="row"
                 className="px-6 py-4 text-sm max-md:text-xs font-medium text-gray-900 whitespace-nowrap bg-gray-200 rounded-md text-right"

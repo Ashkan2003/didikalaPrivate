@@ -12,7 +12,12 @@ const CostCart = () => {
             <p className="text-mainBlue pb-3">سود شما از خرید</p>
             <div className="flex items-center pb-4">
               <p className="">هزینه ارسال</p>
-              <FiInfo className="mr-2 cursor-pointer" />
+              <div className="relative group max-md:hidden">
+                <FiInfo className="mr-2 cursor-pointer text-lg text-[#a0a0a0]" />
+                <span className="hidden group-hover:block border border-gray-300 absolute z-20 w-64 p-3 text-right bg-white text-[#a0a0a0] text-sm font-thin shadow-md mt-2 ">
+                  هزینه ارسال مرسولات می تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با 150 هزار تومان داشته باشد، آن مرسوله به صورت رایگان ارسال می شود. حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.
+                </span>
+              </div>
             </div>
             
           </div>
@@ -26,7 +31,12 @@ const CostCart = () => {
         <div className=" flex gap-32 pt-2 pb-7 text-[#515151] ">
             <div className="flex pr-7 items-center ">
                 <p className=" font-bold ">دیدیکلاب</p>
-                <FiInfo className="mr-2 cursor-pointer" />
+                <div className="relative group max-md:hidden">
+                  <FiInfo className="mr-2 cursor-pointer text-lg text-[#a0a0a0]" />
+                  <span className="hidden group-hover:block border border-gray-300 absolute z-20 w-64 p-3 text-right bg-white text-[#a0a0a0] text-sm font-thin shadow-md mt-2 ">
+                      با امتیاز های خود در باشگاه مشتریان دیجی کالا دیجی کلاب از بین جوایز متنوع انتخاب کنید.
+                  </span>
+              </div>
             </div>
             <div className="">
             <p className="">۱۵۰+ امتیاز</p>
@@ -57,8 +67,13 @@ const CostCart = () => {
                 کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید. 
                 
                 </p>
+                <div className="relative group max-md:hidden">
+                  <FiInfo className="mr-2 cursor-pointer text-lg text-[#a0a0a0]" />
+                  <span className="hidden group-hover:block border border-gray-300 absolute z-20 w-64 p-3 text-right bg-white text-[#a0a0a0] text-sm font-thin shadow-md mt-2  ">
+                    محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می شوند. در صورت عدم ثبت سفارش، دیجی کالا هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالا ها ندارد.
+                  </span>
+              </div>
                 
-                    <FiInfo className="inline cursor-pointer mr-3"/>
             
             </div>
         </div>
