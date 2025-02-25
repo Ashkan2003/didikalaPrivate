@@ -13,7 +13,7 @@ export const useProducts = () => {
     queryKey: ["products"],
     queryFn: async () =>
       await axios
-        .get("http://dshop.somee.com/api/Product/GetAllProducts", {})
+        .get("https://dshop.somee.com/api/Product/GetAllProducts", {})
         .then((res) => res.data)
         .catch((err) => {
           console.log(err);

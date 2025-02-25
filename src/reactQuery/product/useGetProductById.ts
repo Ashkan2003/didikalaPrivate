@@ -14,7 +14,7 @@ export const useGetProductById = (productId: string) => {
     queryKey: ["product", productId],
     queryFn: async () =>
       await axios
-        .get(`http://dshop.somee.com/api/Product/GetProductById/${productId}`, {
+        .get(`https://dshop.somee.com/api/Product/GetProductById/${productId}`, {
           // headers: {
           //   Authorization: `Bearer ${accesstToken}`,
           // },

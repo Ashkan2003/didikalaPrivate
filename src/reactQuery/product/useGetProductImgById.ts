@@ -17,7 +17,7 @@ export const useGetProductImgById = (productId: string) => {
     queryFn: async () =>
       await axios
         .get(
-          `http://dshop.somee.com/api/ProductImage/GetProductImageByProductId/${productId}`,
+          `https://dshop.somee.com/api/ProductImage/GetProductImageByProductId/${productId}`,
           {
             // headers: {
             //   Authorization: `Bearer ${accesstToken}`,
