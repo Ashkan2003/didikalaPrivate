@@ -11,7 +11,6 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
-import Image from "next/image";
 import { useProducts } from "@/reactQuery/product/useGetProducts";
 import MiniSpinner from "../global/MiniSpinner";
 
@@ -28,7 +27,7 @@ const AmazingOfferSection = ({ bgColor }: Props) => {
 
   return (
     <div
-      className={`w-full px-2 sm:px-16 py-12 
+      className={`w-full px-5 sm:px-16 py-12 
         ${bgColor === "red" && "bg-[#EF394E]"}
         ${bgColor === "blue" && "bg-[#304FFE]"}
         `}
@@ -70,24 +69,29 @@ const AmazingOfferSection = ({ bgColor }: Props) => {
             },
           }}
         >
-          <SwiperSlide className="p-5  flex justify-center ">
-            <div className="flex-col items-center flex justify-center ">
-              <div className="relative h-72 !w-full">
-                <Image alt="amaze" fill src="/imgs/amazing-1.png" />
-              </div>
-              <button className="text-white border-white font-bold border-[1px] px-5 py-3 rounded-lg">
-                مشاهده همه
-              </button>
-            </div>
-          </SwiperSlide>
           {status === "pending" ? (
-            <MiniSpinner />
+            <div className="h-52 flex items-center justify-center">
+              <MiniSpinner />
+            </div>
           ) : (
-            products?.map((productCart, index) => (
-              <SwiperSlide className="" key={index}>
-                <ProductCart productCart={productCart} />
-              </SwiperSlide>
-            ))
+            <>
+              {/* <SwiperSlide className="p-5  flex justify-center ">
+                <div className="flex-col items-center flex justify-center ">
+                  <div className="relative h-72 !w-full">
+                    <Image alt="amaze" fill src="/imgs/amazing-1.png" />
+                  </div>
+                  <button className="text-white border-white font-bold border-[1px] px-5 py-3 rounded-lg">
+                    مشاهده همه
+                  </button>
+                </div>
+              </SwiperSlide> */}
+
+              {products?.map((productCart, index) => (
+                <SwiperSlide className="" key={index}>
+                  <ProductCart productCart={productCart} />
+                </SwiperSlide>
+              ))}
+            </>
           )}
         </Swiper>
       </div>
