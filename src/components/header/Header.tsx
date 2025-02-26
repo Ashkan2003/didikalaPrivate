@@ -12,145 +12,97 @@ import HeaderAccountBtn from "./HeaderAccountBtn";
 import HeaderMiniShopCart from "./HeaderMiniShopCart";
 const productsCategories: ProductsCategoryType[] = [
   {
+    categoryId: 1,
     categoryTitle: "کالای دیجیتال",
     subCategories: [
       {
+        subCategoryId: 1,
         subCategoryTitle: "لوازم جانبی گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 2,
         subCategoryTitle: "کیف و کاور گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 3,
         subCategoryTitle: "پاور بانک (شارژر همراه)",
         linkHref: "/",
       },
     ],
   },
   {
+    categoryId: 2,
     categoryTitle: "خودرو، ابزار و تجهیزات صنعتی",
     subCategories: [
       {
+        subCategoryId: 1,
         subCategoryTitle: "لوازم جانبی گوشی",
         linkHref: "/",
       },
     ],
   },
   {
+    categoryId: 1,
     categoryTitle: "مد و پوشاک",
     subCategories: [
       {
+        subCategoryId: 1,
         subCategoryTitle: "لوازم جانبی گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 2,
         subCategoryTitle: "کیف و کاور گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 3,
         subCategoryTitle: "پاور بانک (شارژر همراه)",
         linkHref: "/",
       },
     ],
   },
   {
+    categoryId: 4,
     categoryTitle: "زیبایی و سلامت",
     subCategories: [
       {
+        subCategoryId: 1,
         subCategoryTitle: "لوازم جانبی گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 2,
         subCategoryTitle: "کیف و کاور گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 3,
         subCategoryTitle: "هارد، فلش و SSD",
         linkHref: "/",
       },
     ],
   },
   {
+    categoryId: 5,
     categoryTitle: "خانه و آشپزخانه",
     subCategories: [
       {
+        subCategoryId: 1,
         subCategoryTitle: "لوازم جانبی گوشی",
         linkHref: "/",
       },
       {
+        subCategoryId: 2,
+
         subCategoryTitle: "کیف و کاور گوشی",
         linkHref: "/",
       },
       {
-        subCategoryTitle: "پاور بانک (شارژر همراه)",
-        linkHref: "/",
-      },
-    ],
-  },
-  {
-    categoryTitle: "کتاب، لوازم تحریر و هنر",
-    subCategories: [
-      {
-        subCategoryTitle: "هارد، فلش و SSD",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "مچ‌بند و ساعت هوشمند",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "پاور بانک (شارژر همراه)",
-        linkHref: "/",
-      },
-    ],
-  },
-  {
-    categoryTitle: "اسباب بازی، کودک و نوزاد",
-    subCategories: [
-      {
-        subCategoryTitle: "لوازم جانبی گوشی",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "کیف و کاور گوشی",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "پاور بانک (شارژر همراه)",
-        linkHref: "/",
-      },
-    ],
-  },
-  {
-    categoryTitle: "ورزش و سفر",
-    subCategories: [
-      {
-        subCategoryTitle: "لوازم جانبی گوشی",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "کیف و کاور گوشی",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "پاور بانک (شارژر همراه)",
-        linkHref: "/",
-      },
-    ],
-  },
-  {
-    categoryTitle: "خوردنی و آشامیدنی",
-    subCategories: [
-      {
-        subCategoryTitle: "لوازم جانبی گوشی",
-        linkHref: "/",
-      },
-      {
-        subCategoryTitle: "مچ‌بند و ساعت هوشمند",
-        linkHref: "/",
-      },
-      {
+        subCategoryId: 3,
+
         subCategoryTitle: "پاور بانک (شارژر همراه)",
         linkHref: "/",
       },
@@ -173,15 +125,15 @@ const Header = () => {
   };
 
   const [yposition, setYPosition] = useState(0);
-  //const [lowestYPosition, setlowestYPosition] = useState(0);
+  const [lowestYPosition, setlowestYPosition] = useState(0);
 
   const onScroll = useCallback(() => {
     setYPosition(window.scrollY);
   }, []);
 
-  // if (window.scrollY > lowestYPosition) {
-  //   setlowestYPosition(() => window.scrollY);
-  // }
+  if (window.scrollY > lowestYPosition) {
+    setlowestYPosition(() => window.scrollY);
+  }
 
   useEffect(() => {
     //add eventlistener to window
@@ -196,9 +148,9 @@ const Header = () => {
     <header className="fixed z-50 bg-white w-full ">
       {/* read-banner */}
       <div
-        className={`hidden md:block relative h-[60px] transition-all duration-300 ${
-          yposition > 100 && "-translate-y-16 !h-0"
-        }`}
+      className={`hidden md:block relative h-[60px] transition-all duration-300 ${
+        yposition > 100 && "-translate-y-16 !h-0"
+      }`}
       >
         <Image src="/imgs/large-ads.jpg" alt="omin-net-logo" fill />
       </div>
@@ -314,7 +266,7 @@ const Header = () => {
                 <div className="-my-6 divide-y divide-gray-500/10 !text-white">
                   <div className="space-y-2 py-6">
                     {productsCategories.map((item, index) => (
-                      <div key={index} className="cursor-pointer">
+                      <div key={item.categoryId} className="cursor-pointer">
                         <div
                           className="flex items-center justify-between -mx-3  rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-600 hover:text-gray-900"
                           onClick={() => handleHeaderSublinkSelection(index)}
@@ -342,7 +294,7 @@ const Header = () => {
                                   <Link
                                     className="block text-gray-600 hover:text-blue-500 "
                                     href={subCategory.linkHref}
-                                    key={subCategory.subCategoryTitle}
+                                    key={subCategory.subCategoryId}
                                   >
                                     {subCategory.subCategoryTitle}
                                   </Link>

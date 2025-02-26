@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { useProducts } from "@/reactQuery/product/useGetProducts";
 import MiniSpinner from "../global/MiniSpinner";
+import Image from "next/image";
 
 interface Props {
   bgColor: "red" | "blue";
@@ -75,7 +76,7 @@ const AmazingOfferSection = ({ bgColor }: Props) => {
             </div>
           ) : (
             <>
-              {/* <SwiperSlide className="p-5  flex justify-center ">
+              <SwiperSlide className="p-5  flex justify-center ">
                 <div className="flex-col items-center flex justify-center ">
                   <div className="relative h-72 !w-full">
                     <Image alt="amaze" fill src="/imgs/amazing-1.png" />
@@ -84,7 +85,7 @@ const AmazingOfferSection = ({ bgColor }: Props) => {
                     مشاهده همه
                   </button>
                 </div>
-              </SwiperSlide> */}
+              </SwiperSlide>
 
               {products?.map((productCart, index) => (
                 <SwiperSlide className="" key={index}>

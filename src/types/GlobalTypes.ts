@@ -1,6 +1,8 @@
 export type ProductsCategoryType = {
+  categoryId: number;
   categoryTitle: string;
   subCategories: {
+    subCategoryId: number;
     subCategoryTitle: string;
     linkHref: string;
   }[];
