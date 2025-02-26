@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+import { toggleDarkMode } from "@/lib/features/darkmode/darkmode-slice";
+import { AppDispatch, useAppDispatch, useAppSelector } from "@/lib/store";
 import {
   Popover,
   PopoverButton,
@@ -18,32 +20,38 @@ type AccountMenuType = {
   icon: ReactElement<IconType>;
 };
 
+const accountMenu: AccountMenuType[] = [
+  {
+    title: "پروفایل",
+    linkHref: "/",
+    icon: <RiProfileLine />,
+  },
+  {
+    title: "پیغام ها",
+    linkHref: "/",
+    icon: <MdOutlineMessage />,
+  },
+  {
+    title: "ویرایش حساب کاربری",
+    linkHref: "/",
+    icon: <MdOutlineManageAccounts />,
+  },
+  {
+    title: "خروج",
+    linkHref: "/",
+    icon: <IoMdExit />,
+  },
+];
 const HeaderAccountBtn = () => {
-  const accountMenu: AccountMenuType[] = [
-    {
-      title: "پروفایل",
-      linkHref: "/",
-      icon: <RiProfileLine />,
-    },
-    {
-      title: "پیغام ها",
-      linkHref: "/",
-      icon: <MdOutlineMessage />,
-    },
-    {
-      title: "ویرایش حساب کاربری",
-      linkHref: "/",
-      icon: <MdOutlineManageAccounts />,
-    },
-    {
-      title: "خروج",
-      linkHref: "/",
-      icon: <IoMdExit />,
-    },
-  ];
+  const thememode = useAppSelector((state) => state.darkMode.mode);
+  const dispatch1 = useAppDispatch();
 
+  console.log(thememode, "ooooooooo");
+  function handdelClick() {
+    dispatch1(toggleDarkMode());
+  }
   return (
-    <Popover className="relative">
+    <Popover className="relative" onClick={handdelClick}>
       {({ open }) => (
         <>
           <PopoverButton className="... focus-visible:outline-none">
