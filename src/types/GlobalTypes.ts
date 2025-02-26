@@ -17,6 +17,7 @@ export type ProductImageType = {
   productImageId: string;
   imageName: string;
   imageFile: string;
+  isFirstImage: boolean;
 };
 
 export type ProductType = {
@@ -39,6 +40,14 @@ export type ProductType = {
 
   comments: ProductCommentType[];
   faqs: ProductFaqType[];
+  specifications: SpecificationType[];
+};
+
+export type SpecificationType = {
+  roductSpecificationsId: string;
+  key: string;
+  value: string;
+  roductId: string;
 };
 
 export type ProductCommentType = {

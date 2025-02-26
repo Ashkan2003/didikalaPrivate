@@ -1,43 +1,20 @@
+import { SpecificationType } from "@/types/GlobalTypes";
 import Image from "next/image";
 import React from "react";
 import { IoMdArrowDropleft } from "react-icons/io";
 
-const specifications = {
-  ابعاد: "7.7 × 70.9 × 143.6 میلی‌متر",
-  "سیم کارت": "سایز نانو (8.8 × 12.3 میلی‌متر)",
-  وزن: "174 گرم",
-};
-
 interface Props {
   productName?: string;
   productTitle?: string;
+  productSpecification: SpecificationType[];
 }
 
-export const Specification = ({ productName, productTitle }: Props) => {
+export const Specification = ({
+  productName,
+  productTitle,
+  productSpecification,
+}: Props) => {
   return (
-    // <div className="relative overflow-x-auto">
-    //   <table className="border-separate border-spacing-4 w-full">
-    //     <thead className="text-xs text-gray-700 uppercase">
-    //       <tr>
-    //         <IoMdArrowDropleft className="inline text-lg text-blue-400" />
-    //         <span className="text-[#4d4d4d]">مشخصات کلی</span>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {Object.entries(specifications).map(([key, value]) => (
-    //         <tr key={key} className="bg-white dark:bg-gray-800">
-    //           <th
-    //             scope="row"
-    //             className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-200 rounded-md"
-    //           >
-    //             {key}
-    //           </th>
-    //           <td className="px-6 py-4 bg-gray-200 rounded-md">{value}</td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </div>
     <div className="relative overflow-x-auto">
       <div className="m-8">
         <Image
@@ -66,16 +43,16 @@ export const Specification = ({ productName, productTitle }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(specifications).map(([key, value], index) => (
-            <tr key={`${key}-${index}`} className="bg-white">
+          {productSpecification.map((item, index) => (
+            <tr key={index} className="bg-white">
               <th
                 scope="row"
                 className="px-6 py-4 text-sm max-md:text-xs font-medium text-gray-900 whitespace-nowrap bg-gray-200 rounded-md text-right"
               >
-                {key}
+                {item.key}
               </th>
               <td className="px-6 py-4 text-sm max-md:text-xs bg-gray-200 rounded-md text-right">
-                {value}
+                {item.value}
               </td>
             </tr>
           ))}

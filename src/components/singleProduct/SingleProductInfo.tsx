@@ -9,19 +9,6 @@ import { IoHeart } from "react-icons/io5";
 import FullPageSpinner from "../global/FullPageSpinner";
 import Error from "next/error";
 
-const productDetails = [
-  {
-    id: 0,
-    label: "حافظه داخلی",
-    value: "256 گیگابایت",
-  },
-  {
-    id: 1,
-    label: "شبکه های ارتباطی",
-    value: "4G, 3G",
-  },
-];
-
 interface Props {
   productId: string;
 }
@@ -92,7 +79,7 @@ const SingleProductInfo = ({ productId }: Props) => {
             </div>
           </div>
           <div className="p-6">
-            <ImgSlider />
+            <ImgSlider productId={product.productId} />
           </div>
         </div>
         <div className="lg:col-span-2 md:col-span-1 mx-1 lg:mx-6 md:mx-2 sm:mx-1">
@@ -165,13 +152,13 @@ const SingleProductInfo = ({ productId }: Props) => {
                 ویژگی های محصول
               </h3>
               <ul className="text-[#55565a] leading-8 m-4 text-xs">
-                {productDetails.map((data) => (
-                  <li key={data.id} className="list-disc">
+                {product.specifications.map((item, index) => (
+                  <li key={index} className="list-disc">
                     <span className="text-gray-600 font-semibold">
-                      {data.label}
+                      {item.key}
                     </span>
                     <span>: </span>
-                    <span>{data.value}</span>
+                    <span> {item.value}</span>
                   </li>
                 ))}
               </ul>

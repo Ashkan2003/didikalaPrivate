@@ -74,6 +74,7 @@ export const ProductInfo = ({ product }: Props) => {
             <Specification
               productName={product.productName}
               productTitle={product.productTitle}
+              productSpecification={product.specifications}
             />
           ) : activeTabIndex === 2 ? (
             <Comments product={product} />

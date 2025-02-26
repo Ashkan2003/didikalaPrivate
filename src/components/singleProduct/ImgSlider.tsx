@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -11,22 +10,24 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
+import { useGetProductAllImgsById } from "@/reactQuery/product/useGetProductAllImgsById";
 
-const images = [
-  { id: 1, src: "/imgs/thumbnail-1.jpg", alt: "Slide 1" },
-  { id: 2, src: "/imgs/thumbnail-2.jpg", alt: "Slide 2" },
-  { id: 3, src: "/imgs/thumbnail-3.jpg", alt: "Slide 3" },
-  { id: 4, src: "/imgs/thumbnail-4.jpg", alt: "Slide 4" },
-  { id: 5, src: "/imgs/thumbnail-1.jpg", alt: "Slide 4" },
-  { id: 6, src: "/imgs/thumbnail-2.jpg", alt: "Slide 4" },
-];
+interface Props {
+  productId: string;
+}
 
-const ImgSlider = () => {
-    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-    const [fullscreenImage, setFullscreenImage] = useState<string | null>(
-        null
-      );
+const ImgSlider = ({ productId }: Props) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
+  const { productAllImg, isLoadingProductImgs, productImgError } =
+    useGetProductAllImgsById(productId);
+
+  if (isLoadingProductImgs) return null;
+
+  if (productImgError) {
+    console.log(productImgError);
+  }
   return (
     <div className="w-full flex flex-col items-center">
       {/* Fullscreen Modal */}
@@ -36,7 +37,7 @@ const ImgSlider = () => {
           onClick={() => setFullscreenImage(null)}
         >
           <Image
-            src={fullscreenImage}
+            src={`data:image/png;base64,${fullscreenImage}`}
             layout="fill"
             objectFit="contain"
             alt="Fullscreen"
@@ -60,16 +61,16 @@ const ImgSlider = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className={`mySwiper2 w-full max-w-[400px] h-auto sm:h-[250px] !pb-8 mb-3 border-b border-gray-200`}
       >
-        {images.map((image) => (
-          <SwiperSlide key={image.id}>
+        {productAllImg?.map((image, index) => (
+          <SwiperSlide key={index}>
             <Image
-              src={image.src}
+              src={`data:image/png;base64,${image?.imageFile}`}
               layout="responsive"
-              width={400}
-              height={250}
-              alt={image.alt}
+              width={200}
+              height={150}
+              alt={image.imageName}
               className="w-full h-auto object-cover lg:h-72 xl:h-72"
-              onClick={() => setFullscreenImage(image.src)}
+              onClick={() => setFullscreenImage(image.imageFile)}
             />
           </SwiperSlide>
         ))}
@@ -85,14 +86,14 @@ const ImgSlider = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper w-full mt-2 max-w-lg h-auto"
       >
-        {images.map((image) => (
-          <SwiperSlide key={image.id}>
+        {productAllImg?.map((image, index) => (
+          <SwiperSlide key={index}>
             <Image
-              src={image.src}
+              src={`data:image/png;base64,${image?.imageFile}`}
               layout="responsive"
               width={400}
               height={200}
-              alt={image.alt}
+              alt={image.imageName}
               className="w-full h-20 object-cover cursor-pointer lg:h-24 xl:h-28"
             />
           </SwiperSlide>
